@@ -1,3 +1,16 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box; 
+}
+
+@theme {
+  --color-primary: #f97316;
+  --color-secondary: #3f2b21;
+  --color-accent: #ffd700;
+  --color-background: #fff7ed;
+  --color-foreground: #1f1f1f;
+  --color-success: #16a34a;
+  --color-destructive: #dc2626;
+  --color-muted: #a1a1aa;
+}
