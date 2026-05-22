@@ -1,16 +1,35 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "../components/inputs/Input";
 import Layout from "../components/Layout";
 import { useState, type SubmitEventHandler } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { getUser } = useLocalStorage();
+  const navigate = useNavigate();
+
   const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-  };
 
+    const user = getUser();
+
+    if (!user) {
+      toast.error("Usuário não encontrado");
+      return;
+    }
+
+    if (user.email === email && user.password === password) {
+      toast.success("Login realizado");
+      navigate("/home");
+    } else {
+      toast.error("Email ou senha inválidos");
+    }
+  };
+  
   return (
     <Layout>
       <main className="flex min-h-dvh items-center justify-center px-4 py-8">
