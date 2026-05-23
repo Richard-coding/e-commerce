@@ -3,11 +3,13 @@ import Input from "../components/inputs/Input";
 import { useState, type SubmitEventHandler } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import toast from "react-hot-toast";
+import Brand from "../components/brand/brand";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
 
   const { createUser } = useLocalStorage();
   const navigate = useNavigate();
@@ -19,15 +21,25 @@ const Register = () => {
       const form = { name, email, password };
       createUser(form);
       toast.success("Cadastro efetuado com sucesso", { id: "register" });
+
+      if (isChecked) {
+        localStorage.setItem("policy", JSON.stringify({ policy: isChecked }));
+      }
+
       navigate("/login");
     } else {
       toast.error("Algo deu errado", { id: "register" });
     }
   };
 
+  const handleChecked = () => {
+    setIsChecked((prev) => !prev);
+  };
+
   return (
     <main className="flex min-h-dvh items-center justify-center px-4 py-8">
       <section className="w-full max-w-96 rounded-2xl bg-white p-6 shadow">
+        <Brand />
         <div className="mb-6 text-center">
           <h1 className="text-3xl font-bold">Criar conta</h1>
 
@@ -72,7 +84,13 @@ const Register = () => {
 
           <div className="space-y-3 text-sm">
             <label className="flex items-start gap-2">
-              <input type="checkbox" className="mt-1 accent-primary" required />
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={handleChecked}
+                className="mt-1 accent-primary"
+                required
+              />
 
               <span>
                 Li e aceito a{" "}

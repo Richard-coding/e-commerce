@@ -4,6 +4,8 @@ import Layout from "../components/Layout";
 import { useState, type SubmitEventHandler } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import toast from "react-hot-toast";
+import Brand from "../components/brand/brand";
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,13 +31,14 @@ const Login = () => {
       toast.error("Email ou senha inválidos");
     }
   };
-  
+
   return (
     <Layout>
       <main className="flex min-h-dvh items-center justify-center px-4 py-8">
         <section className="w-full max-w-96 rounded-2xl bg-white p-6 shadow ">
+          <Brand />
           <div className="mb-6 text-center">
-            <h1 className="text-3xl font-bold ">Entrar</h1>
+            <h2 className="text-3xl font-bold ">Entrar</h2>
             <p className="mt-2 text-sm text-muted">
               Acesse sua conta para pedir suas receitas favoritas.
             </p>
