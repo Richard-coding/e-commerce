@@ -5,7 +5,7 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  return <div className="px-3.5">{children}</div>;
+  return <div>{children}</div>;
 };
 
 export default Layout;

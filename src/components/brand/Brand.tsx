@@ -1,9 +1,9 @@
-import Shrimp from "./shrimp.svg?react";
+import Shrimp from "../../assets/icons/shrimp.svg?react"
 
 const Brand = () => {
   return (
-    <div className="flex items-center  mb-4 space-x-4">
-      <div className="w-15 h-15 rounded-[100%] bg-primary flex items-center justify-center">
+    <div className="flex items-center mb-4 space-x-4">
+      <div className="w-15 h-15 rounded-[100%] bg-primary text-foreground flex items-center justify-center">
         <Shrimp className="w-10 h-10 text-white" />
       </div>
       <div>
