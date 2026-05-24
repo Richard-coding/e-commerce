@@ -8,7 +8,7 @@ import { useState } from "react";
 
 const links = [
   { label: "Cardápio", to: "/cardapio" },
-  { label: "Meu pedido", to: "/pedido" },
+  { label: "Pedido", to: "/pedido" },
   { label: "Carrinho", to: "/carrinho" },
   { label: "Privacidade", to: "/lgpd" },
 ];
@@ -34,7 +34,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div className="hidden sm:flex items-center gap-8">
+        <div className="hidden sm:flex items-center gap-4">
           <div className="flex items-center gap-6">
             {links.map(({ to, label }) => (
               <NavLink
@@ -69,7 +69,7 @@ const Header = () => {
               </button>
 
               {isOpen && (
-                <div className="absolute w-40 p-2 bg-white top-12 shadow-md rounded-xl border border-muted/10">
+                <div className="absolute w-40 p-2 bg-white top-12 right-0 shadow-md rounded-xl border border-muted/10">
                   <ul className="flex flex-col gap-2 py-2">
                     <li>
                       <button className="hover:bg-primary/10 py-1 w-full rounded-xl">Sair</button>
