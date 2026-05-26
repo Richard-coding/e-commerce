@@ -124,7 +124,7 @@ const Header = () => {
           </div>
         </div>
 
-        <div ref={mobileRef} className="relative">
+        <div ref={mobileRef} className="relative sm:hidden z-10">
           <button
             className="sm:hidden cursor-pointer bg-primary text-white p-3 rounded-full shadow-md transition-all duration-200 hover:bg-secondary "
             onClick={() => setMobile((prev) => !prev)}
