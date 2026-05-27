@@ -1,6 +1,6 @@
 import Foods from "../assets/imgs/foods.jpg";
 
-export const items = [
+export const products = [
   {
     id: 1,
     title: "Acarajé da Bahia",

@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { items } from "../../../data/Products.tsx";
+import { products } from "../../../data/Products.tsx";
 import Food from "../../../assets/icons/food.svg?react";
 import SectionTitle from "./SectionTitle.tsx";
+import ProductCard from "../ProductCard.tsx";
 
 const categories = ["Todos", "Salgados", "Pratos", "Doces", "Bebidas"];
 
@@ -104,43 +105,8 @@ const Section = () => {
         <SectionTitle about="Cardápio" title="Mais pedidos hoje" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-          {items.map((item) => (
-            <div
-              key={item.id}
-              className="bg-white rounded-2xl overflow-hidden border border-muted/20 shadow-sm hover:shadow-md transition-all duration-300"
-            >
-              <div className="relative h-52">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
-                />
-
-                <span className="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-                  -15%
-                </span>
-              </div>
-
-              <div className="p-4 flex flex-col gap-3">
-                <div>
-                  <h3 className="text-lg font-bold text-secondary">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-sm text-foreground/70 mt-1 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-
-                <p className="text-2xl font-bold text-primary">
-                  R$ {item.price.toFixed(2).replace(".", ",")}
-                </p>
-
-                <button className="w-full py-3 rounded-xl bg-primary text-white font-semibold hover:bg-secondary transition-all duration-200">
-                  + Adicionar
-                </button>
-              </div>
-            </div>
+          {products.map((product) => (
+            <ProductCard product={product} key={product.id} />
           ))}
         </div>
       </div>
