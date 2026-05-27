@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
-import { items } from "../../../data/products.tsx";
+import { items } from "../../../data/Products.tsx";
 import Food from "../../../assets/icons/food.svg?react";
+import SectionTitle from "./SectionTitle.tsx";
 
 const categories = ["Todos", "Salgados", "Pratos", "Doces", "Bebidas"];
 
@@ -77,21 +78,13 @@ const Section = () => {
       </div>
 
       <div className="py-6">
-        <div className="mb-6">
-          <p className="text-primary uppercase text-sm font-bold tracking-wider">
-            Categorias
-          </p>
-
-          <h2 className="text-4xl font-bold text-secondary">
-            Explore por sabor
-          </h2>
-        </div>
+        <SectionTitle about="categorias" title="Explore por sabor" />
 
         <div className="flex gap-4 overflow-x-auto pb-2">
           {categories.map((category, index) => (
             <button
               key={category}
-              className={`min-w-[110px] rounded-2xl border p-5 flex flex-col items-center justify-center gap-3 transition-all duration-200 shadow-sm ${
+              className={`min-w-27.5 rounded-2xl border p-5 flex flex-col items-center justify-center gap-3 transition-all duration-200 shadow-sm ${
                 index === 0
                   ? "bg-primary text-white border-primary"
                   : "bg-white hover:bg-primary/10 border-muted/20"
@@ -108,17 +101,7 @@ const Section = () => {
       </div>
 
       <div>
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <p className="text-primary uppercase text-sm font-bold tracking-wider">
-              Cardápio
-            </p>
-
-            <h2 className="text-4xl font-bold text-secondary">
-              Mais pedidos hoje
-            </h2>
-          </div>
-        </div>
+        <SectionTitle about="Cardápio" title="Mais pedidos hoje" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {items.map((item) => (
