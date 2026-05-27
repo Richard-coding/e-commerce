@@ -44,7 +44,7 @@ const Section = () => {
             rolo e muito mais — receitas tradicionais preparadas na hora.
           </p>
 
-          <div className="grid grid-cols-2 gap-4 font-semibold text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-semibold text-sm">
             <NavLink
               to="/cardapio"
               className="py-3 px-4 rounded-xl shadow bg-primary text-white hover:bg-secondary transition-all duration-200 text-center"
