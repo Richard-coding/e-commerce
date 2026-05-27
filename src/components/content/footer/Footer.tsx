@@ -95,10 +95,10 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-sm text-white/60">
+        <div className="max-w-7xl mx-auto px-6 py-4 grid grid-cols-1 sm:grid-cols-2 sm:text-center items-center justify-between gap-2 text-sm text-white/60">
           <p>© 2026 Raízes do Nordeste. Todos os direitos reservados.</p>
 
-          <p className="text-center md:text-right">
+          <p >
             Projeto fictício desenvolvido para fins educacionais e acadêmicos.
           </p>
         </div>
