@@ -112,7 +112,7 @@ const Register = () => {
 
           <button
             type="submit"
-            className="mt-4 w-full rounded-xl bg-primary px-4 py-3 font-semibold text-white"
+            className="mt-4 w-full rounded-xl bg-primary px-4 py-3 font-semibold text-white hover:bg-secondary cursor-pointer"
           >
             Criar conta
           </button>
