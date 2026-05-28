@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const MenuSection = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <section className="max-w-7xl mx-auto py-6 px-6">Cardápio</section>;
+};
 
-export default MenuSection
+export default MenuSection;

@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Lgpd from "./pages/Lgpd";
 import Layout from "./pages/Layout";
+import MenuSection from "./components/sections/menu/MenuSection";
 
 const App = () => {
   return (
@@ -19,6 +20,8 @@ const App = () => {
 
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
+          <Route path="/cardapio" element={<MenuSection />} />
+
         </Route>
 
         <Route path="*" element={<Login />} />
