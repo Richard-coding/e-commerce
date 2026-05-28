@@ -1,13 +1,13 @@
 import { NavLink } from "react-router-dom";
 
-import Shrimp from "../../../assets/icons/shrimp.svg?react";
-import Bar from "../../../assets/icons/bar.svg?react";
-import User from "../../../assets/icons/user.svg?react";
-import Shopping from "../../../assets/icons/shopping.svg?react";
-import Exit from "../../../assets/icons/exit.svg?react";
-import Food from "../../../assets/icons/food.svg?react";
-import ShoppingCart from "../../../assets/icons/shopping-cart.svg?react";
-import Privacy from "../../../assets/icons/privacy.svg?react";
+import Shrimp from "@/assets/icons/shrimp.svg?react";
+import Bar from "@/assets/icons/bar.svg?react";
+import User from "@/assets/icons/user.svg?react";
+import Shopping from "@/assets/icons/shopping.svg?react";
+import Exit from "@/assets/icons/exit.svg?react";
+import Food from "@/assets/icons/food.svg?react";
+import ShoppingCart from "@/assets/icons/shopping-cart.svg?react";
+import Privacy from "@/assets/icons/privacy.svg?react";
 import { useEffect, useRef, useState } from "react";
 
 const links = [

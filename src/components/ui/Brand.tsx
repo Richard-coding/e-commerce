@@ -1,4 +1,4 @@
-import Shrimp from "../../assets/icons/shrimp.svg?react"
+import Shrimp from "@/assets/icons/shrimp.svg?react"
 
 const Brand = () => {
   return (

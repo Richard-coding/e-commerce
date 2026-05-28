@@ -3,7 +3,7 @@ import Input from "../components/inputs/Input";
 import { useState, type SubmitEventHandler } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 import toast from "react-hot-toast";
-import Brand from "../components/brand/Brand";
+import Brand from "../components/ui/Brand";
 
 const Register = () => {
   const [name, setName] = useState("");

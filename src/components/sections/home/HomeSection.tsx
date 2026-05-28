@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { products } from "../../../data/Products.tsx";
-import Food from "../../../assets/icons/food.svg?react";
-import SectionTitle from "./SectionTitle.tsx";
-import ProductCard from "../ProductCard.tsx";
+import { products } from "@/data/Products.tsx";
+import Food from "@/assets/icons/food.svg?react";
+import SectionTitle from "./HomeSectionTitle.tsx";
+import ProductCard from "@/components/ui/ProductCard.tsx";
+
 
 const categories = ["Todos", "Salgados", "Pratos", "Doces", "Bebidas"];
 

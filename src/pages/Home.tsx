@@ -1,4 +1,5 @@
-import Section from "../components/content/section/Section";
+import Section from "@/components/sections/home/HomeSection";
+
 
 const Home = () => {
   return (
