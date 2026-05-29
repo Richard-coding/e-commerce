@@ -1,11 +1,11 @@
 import Food from "@/assets/icons/food.svg?react";
-import { cartItems } from "@/data/Cart.ts";
+import { cartItems } from "@/data/cart";
 
 const Cart = () => {
   return (
-    <section className="max-w-7xl mx-auto p-6 flex flex-col gap-10 ">
+    <section className="min-h-screen max-w-7xl mx-auto p-6 flex flex-col ">
       <div className="rounded-3xl min-h-72 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
-        <div className="max-w-7xl mx-auto p-6">
+        <div className="p-6">
           <span className="bg-white/10 border border-white/10 px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-2">
             <Food className="w-3 h-3" />
             {cartItems.length} itens adicionados
