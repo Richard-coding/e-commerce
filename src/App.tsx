@@ -8,6 +8,7 @@ import Lgpd from "./pages/Lgpd";
 import Layout from "./pages/Layout";
 import MenuSection from "./components/sections/menu/MenuSection";
 import CartSection from "@/components/sections/cart/CartSection";
+import CheckoutSection from "./components/sections/order/OrderSection";
 
 const App = () => {
   return (
@@ -23,7 +24,7 @@ const App = () => {
           <Route path="/home" element={<Home />} />
           <Route path="/cardapio" element={<MenuSection />} />
           <Route path="/carrinho" element={<CartSection />} />
-
+          <Route path="/pedido" element={<CheckoutSection />} />
         </Route>
 
         <Route path="*" element={<Login />} />

@@ -148,12 +148,19 @@ const Cart = () => {
                 <span className="text-foreground/70">Taxa de entrega</span>
                 <span className="font-medium text-lg">R$ 6,90</span>
               </div>
+
+              <div className="flex items-center justify-between">
+                <span className="text-foreground/70">Desconto</span>
+                <span className="font-medium text-primary text-lg">
+                  - R$ 2,49
+                </span>
+              </div>
             </div>
 
             <div className="border-t border-muted/20 my-6" />
 
             <div className="flex items-center justify-between text-2xl font-bold">
-              <span className=" text-secondary">Total</span>
+              <span className=" text-secondary ">Total</span>
               <strong className=" text-primary">R$ 80,33</strong>
             </div>
 
