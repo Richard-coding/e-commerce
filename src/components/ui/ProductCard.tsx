@@ -37,7 +37,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
 
         <div className="mt-auto">
-          <p className="text-2xl font-bold text-primary mb-3">
+          <p className="text-lg font-lg text-primary mb-3">
             R$ {product.price.toFixed(2).replace(".", ",")}
           </p>
 

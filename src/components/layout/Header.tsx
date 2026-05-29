@@ -12,8 +12,8 @@ import { useEffect, useRef, useState } from "react";
 
 const links = [
   { label: "Cardápio", to: "/cardapio", icon: Food },
-  { label: "Pedido", to: "/pedido", icon: Shopping },
   { label: "Carrinho", to: "/carrinho", icon: ShoppingCart },
+  { label: "Pedido", to: "/pedido", icon: Shopping },
   { label: "Privacidade", to: "/lgpd", icon: Privacy },
 ];
 
@@ -24,21 +24,20 @@ const Header = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
   const mobileRef = useRef<HTMLDivElement | null>(null);
 
+  const closeMenus = () => {
+    setMenu(false);
+    setMobile(false);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Node;
 
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(target)
-      ) {
+      if (menuRef.current && !menuRef.current.contains(target)) {
         setMenu(false);
       }
 
-      if (
-        mobileRef.current &&
-        !mobileRef.current.contains(target)
-      ) {
+      if (mobileRef.current && !mobileRef.current.contains(target)) {
         setMobile(false);
       }
     };
@@ -113,7 +112,7 @@ const Header = () => {
                   <ul className="flex flex-col gap-2">
                     <li>
                       <button className="hover:bg-primary/10 p-2 w-full rounded-xl flex gap-4 items-center cursor-pointer text-sm">
-                        <Exit className="w-5 h-5"/>
+                        <Exit className="w-5 h-5" />
                         Sair
                       </button>
                     </li>
@@ -141,6 +140,7 @@ const Header = () => {
                       key={label}
                       to={to}
                       className="hover:bg-primary/10 py-2 px-4 w-full rounded-xl flex gap-4 items-center "
+                      onClick={closeMenus}
                     >
                       <Icon className="w-5 h-5" />
                       {label}

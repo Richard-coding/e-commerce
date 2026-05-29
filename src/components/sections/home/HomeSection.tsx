@@ -3,9 +3,7 @@ import { products } from "@/data/Products.tsx";
 import Food from "@/assets/icons/food.svg?react";
 import SectionTitle from "./HomeSectionTitle.tsx";
 import ProductCard from "@/components/ui/ProductCard.tsx";
-
-
-const categories = ["Todos", "Salgados", "Pratos", "Doces", "Bebidas"];
+import { categories } from "@/data/Categories.tsx";
 
 const Section = () => {
   return (

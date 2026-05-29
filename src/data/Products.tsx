@@ -33,8 +33,8 @@ export const products = [
 
   {
     id: 4,
-    title: "Pinto",
-    description: "Pinto recheada com queijo coalho.",
+    title: "teste",
+    description: "Teste recheada com queijo coalho.",
     price: 29.3,
     image: Foods,
     category: "Pratos",
