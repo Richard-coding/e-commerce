@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Input from "@/components/inputs/Input";
 import { useState, type SubmitEventHandler } from "react";
-import useLocalStorage from "../hooks/useLocalStorage";
+import useLocalStorage from "@/hooks/useLocalStorage";
 import toast from "react-hot-toast";
 import Brand from "@/components/ui/Brand";
 

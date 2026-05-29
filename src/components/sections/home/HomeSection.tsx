@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { products } from "@/data/Products.ts";
 import Food from "@/assets/icons/food.svg?react";
-import SectionTitle from "./HomeSectionTitle.tsx";
+import SectionTitle from "@/components/sections/home/HomeSectionTitle";
 import ProductCard from "@/components/ui/ProductCard.tsx";
 import { categories } from "@/data/Categories.ts";
 

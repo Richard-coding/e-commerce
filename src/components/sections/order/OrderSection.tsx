@@ -1,6 +1,6 @@
 import Food from "@/assets/icons/food.svg?react";
 
-const CheckoutSection = () => {
+const OrderSection = () => {
   return (
     <section className="min-h-screen bg-[#faf6ee]">
       <div className="max-w-7xl mx-auto rounded-3xl min-h-72 mt-6 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
@@ -216,4 +216,4 @@ const CheckoutSection = () => {
   );
 };
 
-export default CheckoutSection;
+export default OrderSection;
