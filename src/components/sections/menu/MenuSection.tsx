@@ -3,7 +3,7 @@ import { categories } from "@/data/Categories.tsx";
 
 const MenuSection = () => {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-10">
+    <section className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-10 ">
       {/* HERO */}
       <div className="relative h-105 rounded-3xl overflow-hidden">
         <img
