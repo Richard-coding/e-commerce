@@ -3,8 +3,8 @@ import { cartItems } from "@/data/Cart.ts";
 
 const Cart = () => {
   return (
-    <section className="min-h-screen px-6">
-      <div className="max-w-7xl mx-auto rounded-3xl min-h-72 mt-6 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
+    <section className="max-w-7xl mx-auto p-6 flex flex-col gap-10 ">
+      <div className="rounded-3xl min-h-72 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
         <div className="max-w-7xl mx-auto p-6">
           <span className="bg-white/10 border border-white/10 px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-2">
             <Food className="w-3 h-3" />
@@ -34,7 +34,7 @@ const Cart = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto py-10 grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
+      <div className="  py-10 grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
         <div className="flex flex-col gap-6">
           <div className="flex flex-col gap-4">
             {cartItems.map((item) => (

@@ -3,8 +3,7 @@ import { categories } from "@/data/Categories.ts";
 
 const MenuSection = () => {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-10 ">
-      {/* HERO */}
+    <section className="max-w-7xl mx-auto p-6 flex flex-col gap-10 ">
       <div className="relative h-105 rounded-3xl overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1400&auto=format&fit=crop"
@@ -36,7 +35,6 @@ const MenuSection = () => {
         </div>
       </div>
 
-      {/* SEARCH */}
       <div className="bg-white rounded-2xl shadow border border-muted/20 p-3">
         <input
           type="text"
@@ -45,7 +43,6 @@ const MenuSection = () => {
         />
       </div>
 
-      {/* CATEGORIES */}
       <div className="flex flex-col gap-5">
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-bold text-secondary">Categorias</h2>
@@ -71,7 +68,6 @@ const MenuSection = () => {
         </div>
       </div>
 
-      {/* PRODUCTS */}
       <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
         {products.map((item) => (
           <div
