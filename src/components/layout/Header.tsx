@@ -11,9 +11,9 @@ import Privacy from "@/assets/icons/privacy.svg?react";
 import { useEffect, useRef, useState } from "react";
 
 const links = [
-  { label: "Cardápio", to: "/cardapio", icon: Food },
-  { label: "Carrinho", to: "/carrinho", icon: ShoppingCart },
-  { label: "Pedido", to: "/pedido", icon: Shopping },
+  { label: "Cardápio", to: "/menu", icon: Food },
+  { label: "Carrinho", to: "/cart", icon: ShoppingCart },
+  { label: "Pedido", to: "/order", icon: Shopping },
   { label: "Privacidade", to: "/lgpd", icon: Privacy },
 ];
 

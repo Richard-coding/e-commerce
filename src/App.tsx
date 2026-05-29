@@ -8,7 +8,8 @@ import Lgpd from "./pages/Lgpd";
 import Layout from "./pages/Layout";
 import MenuSection from "./components/sections/menu/MenuSection";
 import CartSection from "@/components/sections/cart/CartSection";
-import CheckoutSection from "./components/sections/order/OrderSection";
+import CheckoutSection from "./components/sections/cart/CheckoutSection";
+import OrderSection from "./components/sections/order/OrderSection";
 
 const App = () => {
   return (
@@ -16,15 +17,16 @@ const App = () => {
       <Toaster />
 
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/lgpd" element={<Lgpd />} />
 
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
-          <Route path="/cardapio" element={<MenuSection />} />
-          <Route path="/carrinho" element={<CartSection />} />
-          <Route path="/pedido" element={<CheckoutSection />} />
+          <Route path="/menu" element={<MenuSection />} />
+          <Route path="/cart" element={<CartSection />} />
+          <Route path="/checkout" element={<CheckoutSection />} />
+          <Route path="/order" element={<OrderSection />} />
         </Route>
 
         <Route path="*" element={<Login />} />

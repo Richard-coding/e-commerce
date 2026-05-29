@@ -1,10 +1,9 @@
-import Section from "@/components/sections/home/HomeSection";
-
+import HomeSection from "@/components/sections/home/HomeSection";
 
 const Home = () => {
   return (
     <div>
-      <Section />
+      <HomeSection />
     </div>
   );
 };

@@ -5,7 +5,7 @@ import SectionTitle from "@/components/sections/home/HomeSectionTitle";
 import ProductCard from "@/components/ui/ProductCard.tsx";
 import { categories } from "@/data/Categories.ts";
 
-const Section = () => {
+const HomeSection = () => {
   return (
     <section className="max-w-7xl mx-auto py-6 px-6">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 ">
@@ -113,4 +113,4 @@ const Section = () => {
   );
 };
 
-export default Section;
+export default HomeSection;
