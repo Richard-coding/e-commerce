@@ -1,5 +1,5 @@
 import Food from "@/assets/icons/food.svg?react";
-import { cartItems } from "@/data/Cart";
+import { cartItems } from "@/data/Cart.ts";
 
 const Cart = () => {
   return (

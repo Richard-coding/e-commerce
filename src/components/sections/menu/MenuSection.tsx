@@ -1,5 +1,5 @@
-import { products } from "@/data/Products";
-import { categories } from "@/data/Categories.tsx";
+import { products } from "@/data/Products.ts";
+import { categories } from "@/data/Categories.ts";
 
 const MenuSection = () => {
   return (
