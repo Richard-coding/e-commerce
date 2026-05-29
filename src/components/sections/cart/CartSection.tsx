@@ -4,7 +4,7 @@ import { cartItems } from "@/data/Cart";
 const Cart = () => {
   return (
     <section className="min-h-screen bg-[#faf6ee]">
-      <div className="bg-gradient-to-r from-[#4d2b1f] to-[#6a4030] text-white">
+      <div className="bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
         <div className="max-w-7xl mx-auto p-6">
           <span className="bg-white/10 border border-white/10 px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-2">
             <Food className="w-3 h-3" />
@@ -138,15 +138,15 @@ const Cart = () => {
               Confira os valores antes de confirmar.
             </p>
 
-            <div className="flex flex-col gap-4 mt-8 text-sm">
-              <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-4 mt-8 text-md">
+              <div className="flex items-center justify-between ">
                 <span className="text-foreground/70">Subtotal</span>
-                <span className="font-medium">R$ 73,43</span>
+                <span className="font-medium text-lg">R$ 73,43</span>
               </div>
 
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between ">
                 <span className="text-foreground/70">Taxa de entrega</span>
-                <span className="font-medium">R$ 6,90</span>
+                <span className="font-medium text-lg">R$ 6,90</span>
               </div>
             </div>
 
