@@ -4,12 +4,13 @@ import { Toaster } from "react-hot-toast";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
-import Lgpd from "./pages/Lgpd";
+import Lgpd from "./components/sections/legal/Lgpd";
 import Layout from "./pages/Layout";
 import MenuSection from "./components/sections/menu/MenuSection";
 import CartSection from "@/components/sections/cart/CartSection";
 import CheckoutSection from "./components/sections/cart/CheckoutSection";
 import OrderSection from "./components/sections/order/OrderSection";
+import Terms from "./components/sections/legal/Terms";
 
 const App = () => {
   return (
@@ -19,7 +20,6 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/lgpd" element={<Lgpd />} />
 
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
@@ -27,6 +27,8 @@ const App = () => {
           <Route path="/cart" element={<CartSection />} />
           <Route path="/checkout" element={<CheckoutSection />} />
           <Route path="/order" element={<OrderSection />} />
+          <Route path="/lgpd" element={<Lgpd />} />
+          <Route path="/lgpd" element={<Terms />} />
         </Route>
 
         <Route path="*" element={<Login />} />
