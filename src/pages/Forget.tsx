@@ -12,11 +12,11 @@ const ForgetPassword = () => {
     e.preventDefault();
 
     if (!email) {
-      toast.error("Informe seu e-mail");
+      toast.error("Informe seu e-mail", {id: "error"});
       return;
     }
 
-    toast.success("Instruções enviadas para seu e-mail");
+    toast.success("Instruções enviadas para seu e-mail", {id: "sucess"});
     setEmail("");
   };
 

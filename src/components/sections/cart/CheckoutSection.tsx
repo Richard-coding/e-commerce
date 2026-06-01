@@ -1,4 +1,5 @@
 import Food from "@/assets/icons/food.svg?react";
+import { NavLink } from "react-router-dom";
 
 const CheckoutSection = () => {
   return (
@@ -159,9 +160,12 @@ const CheckoutSection = () => {
               <strong className="text-2xl  text-primary">R$ 77,84</strong>
             </div>
 
-            <button className="w-full mt-8 bg-primary hover:bg-secondary transition-all duration-200 text-white py-4 rounded-2xl font-semibold">
+            <NavLink
+              to="/order"
+              className="w-full mt-8 bg-primary hover:bg-secondary transition-all duration-200 text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 cursor-pointer"
+            >
               Confirmar pedido
-            </button>
+            </NavLink>
 
             <div className=" text-foreground/60 text-sm mt-4">
               <div className="flex gap-2 items-center">
