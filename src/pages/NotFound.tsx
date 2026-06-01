@@ -3,9 +3,9 @@ import Food from "@/assets/icons/food.svg?react";
 
 const NotFound = () => {
   return (
-    <main className=" bg-[#fcfbf8] flex items-center justify-center px-6 py-10">
-      <section className="w-full max-w-2xl bg-white rounded-3xl border border-muted/20 shadow-sm p-8 text-center">
-        <span className="mx-auto w-fit bg-primary/10 border border-primary/20 px-4 py-2 rounded-full text-xs font-bold text-primary uppercase inline-flex items-center gap-2">
+    <main className="flex items-center justify-center px-6 py-10">
+      <section className="w-full max-w-2xl rounded-3xl  p-8 text-center">
+        <span className="mx-auto w-fit  border border-primary/20 px-4 py-2 rounded-full text-xs font-bold text-primary uppercase inline-flex items-center gap-2">
           <Food className="w-3 h-3" />
           Você se perdeu no caminho
         </span>

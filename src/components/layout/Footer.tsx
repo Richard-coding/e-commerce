@@ -86,10 +86,10 @@ const Footer = () => {
           </NavLink>
 
           <a
-            href="mailto:contato@raizes.com.br"
+            href="mailto:richardvariable@outlook.com"
             className="w-fit text-white/80 hover:text-primary transition-all duration-200"
           >
-            contato@raizes.com.br
+            richardvariable@outlook.com
           </a>
         </div>
       </div>
