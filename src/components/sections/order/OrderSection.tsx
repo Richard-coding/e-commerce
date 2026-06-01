@@ -28,7 +28,7 @@ const OrderSection = () => {
 
             <span className="flex items-center gap-2">
               <Food className="w-4 h-4" />
-              35–45 min
+              35/45 min
             </span>
 
             <span className="flex items-center gap-2">
@@ -55,7 +55,7 @@ const OrderSection = () => {
 
             <div className="text-sm text-foreground/60">
               Previsão de entrega:
-              <strong className="text-secondary ml-1">19:15 – 19:25</strong>
+              <strong className="text-secondary ml-1">19:15 / 19:25</strong>
             </div>
           </div>
 
@@ -97,7 +97,7 @@ const OrderSection = () => {
                 </div>
 
                 {index !== steps.length - 1 && (
-                  <div className="hidden md:block absolute top-5 left-10 w-full h-0.5 bg-muted/20 -z-0" />
+                  <div className="hidden md:block absolute top-5 left-10 w-full h-0.5 bg-muted/20 z-0" />
                 )}
               </div>
             ))}

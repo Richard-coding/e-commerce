@@ -38,7 +38,7 @@ const Register = () => {
 
   return (
     <main className="flex min-h-dvh items-center justify-center px-4 py-8">
-      <section className="w-full max-w-96 rounded-2xl bg-white p-6 shadow">
+      <section className="w-full max-w-96 rounded-2xl bg-white p-6 shadow border border-muted/20">
         <Brand />
         <div className="mb-6 text-center">
           <h1 className="text-3xl font-bold">Criar conta</h1>

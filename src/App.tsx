@@ -11,6 +11,7 @@ import CartSection from "@/components/sections/cart/CartSection";
 import CheckoutSection from "./components/sections/cart/CheckoutSection";
 import OrderSection from "./components/sections/order/OrderSection";
 import Terms from "./components/sections/legal/Terms";
+import ForgetPassword from "./pages/Forget";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="forget" element={<ForgetPassword />} />
 
         <Route element={<Layout />}>
           <Route path="/home" element={<Home />} />
