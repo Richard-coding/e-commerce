@@ -24,7 +24,7 @@ const Login = () => {
 
     if (user.email === email && user.password === password) {
       toast.success("Login realizado");
-      navigate("/home");
+      navigate("/");
     } else {
       toast.error("Email ou senha inválidos");
     }
