@@ -39,7 +39,7 @@ const OrderSection = () => {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto py-10">
+      <div className="max-w-7xl mx-auto pt-10">
         {/* TIMELINE */}
         <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">

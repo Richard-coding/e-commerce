@@ -12,6 +12,7 @@ import CheckoutSection from "./components/sections/cart/CheckoutSection";
 import OrderSection from "./components/sections/order/OrderSection";
 import Terms from "./components/sections/legal/Terms";
 import ForgetPassword from "./pages/Forget";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -24,16 +25,15 @@ const App = () => {
         <Route path="forget" element={<ForgetPassword />} />
 
         <Route element={<Layout />}>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/menu" element={<MenuSection />} />
           <Route path="/cart" element={<CartSection />} />
           <Route path="/checkout" element={<CheckoutSection />} />
           <Route path="/order" element={<OrderSection />} />
           <Route path="/lgpd" element={<Lgpd />} />
           <Route path="/lgpd" element={<Terms />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
-
-        <Route path="*" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );
