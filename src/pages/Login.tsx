@@ -66,13 +66,13 @@ const Login = () => {
             </label>
           </div>
 
-          <Link to="/forget" className="text-xs text-primary hover:underline">
+          <Link to="/forget" className="text-xs text-primary hover:underline block">
             Esqueci minha senha
           </Link>
 
           <button
             type="submit"
-            className="w-full rounded-xl bg-primary px-4 py-3 font-semibold mt-4 text-white hover:bg-secondary cursor-pointer "
+            className="btn-primary w-full"
           >
             Entrar
           </button>

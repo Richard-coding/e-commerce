@@ -162,7 +162,7 @@ const CheckoutSection = () => {
 
             <NavLink
               to="/order"
-              className="w-full mt-8 bg-primary hover:bg-secondary transition-all duration-200 text-white py-4 rounded-2xl font-semibold flex items-center justify-center gap-2 cursor-pointer"
+              className="btn-primary w-full flex items-center justify-center mt-4"
             >
               Confirmar pedido
             </NavLink>

@@ -1,16 +1,71 @@
 @import "tailwindcss";
 
 * {
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 @theme {
   --color-primary: #f97316;
+  --color-primary-hover: #ea580c;
   --color-secondary: #3f2b21;
   --color-accent: #ffd700;
   --color-background: #fff7ed;
+  --color-surface: #ffffff;
   --color-foreground: #1f1f1f;
   --color-success: #16a34a;
   --color-destructive: #dc2626;
   --color-muted: #a1a1aa;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-4xl: 32px;
+}
+
+@layer components {
+  .card-base {
+    @apply bg-surface rounded-2xl border border-muted/30 shadow-sm;
+  }
+
+  .card-hover {
+    @apply bg-surface rounded-2xl border border-muted/30 shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white rounded-xl px-4 py-3 font-semibold hover:bg-primary-hover transition-colors;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-white rounded-xl px-4 py-3 font-semibold transition-colors;
+  }
+
+  .btn-ghost {
+    @apply text-primary hover:bg-primary/10 rounded-xl px-4 py-3 transition-colors;
+  }
+
+  .input-base {
+    @apply w-full rounded-xl border border-muted/40 bg-white px-4 py-3 outline-none focus:border-primary transition-colors;
+  }
+
+  .badge-primary {
+    @apply bg-primary text-white rounded-full px-3 py-1 text-xs font-bold;
+  }
+
+  .badge-soft {
+    @apply bg-primary/20 text-primary rounded-full px-3 py-1 text-xs font-semibold;
+  }
+
+  .link-base {
+    @apply text-foreground/80 hover:text-primary transition-colors;
+  }
+
+  .text-soft {
+    @apply text-foreground/70;
+  }
+
+  .section-label {
+    @apply text-sm font-semibold text-primary uppercase tracking-wide;
+  }
 }

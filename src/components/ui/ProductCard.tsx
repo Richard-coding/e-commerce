@@ -41,7 +41,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             R$ {product.price.toFixed(2).replace(".", ",")}
           </p>
 
-          <button className="w-full py-3 px-4 rounded-xl bg-primary text-white font-semibold hover:bg-secondary transition-all duration-200">
+          <button className="btn-primary w-full">
             + Adicionar
           </button>
         </div>

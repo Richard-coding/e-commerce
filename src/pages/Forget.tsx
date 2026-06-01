@@ -46,7 +46,7 @@ const ForgetPassword = () => {
 
           <button
             type="submit"
-            className="w-full rounded-xl bg-primary px-4 py-3 font-semibold text-white hover:bg-secondary cursor-pointer transition-all duration-200"
+            className="btn-primary w-full"
           >
             Enviar instruções
           </button>
