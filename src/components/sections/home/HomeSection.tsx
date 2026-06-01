@@ -62,16 +62,16 @@ const HomeSection = () => {
 
           <div className="grid grid-cols-2 gap-4 text-center text-sm text-foreground/70">
             <div className="bg-white rounded-xl py-3 border border-muted/20 flex items-center justify-center gap-2">
-              <Food className="w-5 h-5" /> <p>Entrega rápida</p>
+              <p>Entrega rápida</p>
             </div>
             <div className="bg-white rounded-xl py-3 border border-muted/20 flex items-center justify-center gap-2 md:hidden">
-              <Food className="w-5 h-5" /> <p>Pagamento rápido</p>
+              <p>Pagamento rápido</p>
             </div>
             <div className="bg-white  rounded-xl py-3 border border-muted/20 flex items-center justify-center gap-2">
-              <Food className="w-5 h-5" /> <p>Fidelidade</p>
+              <p>Fidelidade</p>
             </div>
             <div className="bg-white rounded-xl py-3 border border-muted/20 flex items-center justify-center gap-2 md:hidden">
-              <Food className="w-5 h-5" /> <p>Seguro</p>
+              <p>Seguro</p>
             </div>
           </div>
         </div>

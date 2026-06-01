@@ -15,10 +15,10 @@ const MenuSection = () => {
 
         <div className="absolute inset-0 p-8 flex flex-col justify-center max-w-xl text-white">
           <span className="bg-primary/90 text-sm font-semibold px-4 py-2 rounded-full w-fit mb-5">
-            Promoção da semana • até 25% OFF
+           Promoção até 25% OFF
           </span>
 
-          <h1 className="text-5xl font-bold leading-tight">
+          <h1 className="text-3xl sm:text-5xl font-bold leading-tight">
             Sabores que vêm do <span className="text-primary">sertão</span>
           </h1>
 
@@ -28,9 +28,8 @@ const MenuSection = () => {
           </p>
 
           <div className="flex gap-6 mt-6 text-sm text-white/70">
-            <span>Entrega em até 35min</span>
+            <span>Entrega em até 35 min</span>
             <span>4.9 de avaliação</span>
-            <span>Frete grátis acima de R$ 60</span>
           </div>
         </div>
       </div>
