@@ -121,7 +121,7 @@ const Register = () => {
         <div className="mt-4 text-center">
           <p className="text-sm">
             Já possui conta?{" "}
-            <Link to="/" className="text-primary hover:underline">
+            <Link to="/login" className="text-primary hover:underline">
               Entrar
             </Link>
           </p>
