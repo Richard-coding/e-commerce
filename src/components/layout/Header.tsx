@@ -176,7 +176,7 @@ const Header = () => {
                   <NavLink
                     to="/cart"
                     className={({ isActive }) =>
-                      `py-2 px-4 w-full rounded-xl flex gap-4 items-center transition-colors duration-200 ${
+                      `py-2 px-4 w-full rounded-xl flex gap-4 items-center transition-colors duration-200 relative ${
                         isActive
                           ? "bg-primary/10 text-primary font-semibold"
                           : "hover:bg-primary/10 text-foreground"
@@ -184,6 +184,9 @@ const Header = () => {
                     }
                     onClick={closeMenus}
                   >
+                    <span className="absolute -top-2 left-8 min-w-5 h-5 px-1 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">
+                      1
+                    </span>
                     <ShoppingCart className="w-5 h-5" />
                     Carrinho
                   </NavLink>
