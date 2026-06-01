@@ -8,28 +8,28 @@ const Footer = () => {
           <h3 className="font-bold text-lg">Cardápio</h3>
 
           <NavLink
-            to="/cardapio"
+            to="/menu"
             className="w-fit text-white/80 hover:text-primary transition-all duration-200"
           >
             Salgados
           </NavLink>
 
           <NavLink
-            to="/cardapio"
+            to="/menu"
             className="w-fit text-white/80 hover:text-primary transition-all duration-200"
           >
             Pratos
           </NavLink>
 
           <NavLink
-            to="/cardapio"
+            to="/menu"
             className="w-fit text-white/80 hover:text-primary transition-all duration-200"
           >
             Doces
           </NavLink>
 
           <NavLink
-            to="/cardapio"
+            to="/menu"
             className="w-fit text-white/80 hover:text-primary transition-all duration-200"
           >
             Bebidas
@@ -47,21 +47,21 @@ const Footer = () => {
           </NavLink>
 
           <NavLink
-            to="/cadastro"
+            to="/register"
             className="w-fit text-white/80 hover:text-primary transition-all duration-200"
           >
             Cadastrar
           </NavLink>
 
           <NavLink
-            to="/pedido"
+            to="/order"
             className="w-fit text-white/80 hover:text-primary transition-all duration-200"
           >
             Meus pedidos
           </NavLink>
 
           <NavLink
-            to="/carrinho"
+            to="/cart"
             className="w-fit text-white/80 hover:text-primary transition-all duration-200"
           >
             Carrinho
@@ -79,7 +79,7 @@ const Footer = () => {
           </NavLink>
 
           <NavLink
-            to="/termos"
+            to="/terms"
             className="w-fit text-white/80 hover:text-primary transition-all duration-200"
           >
             Termos de uso

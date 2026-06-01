@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import Shrimp from "@/assets/icons/shrimp.svg?react";
@@ -8,11 +9,9 @@ import Exit from "@/assets/icons/exit.svg?react";
 import Food from "@/assets/icons/food.svg?react";
 import ShoppingCart from "@/assets/icons/shopping-cart.svg?react";
 import Privacy from "@/assets/icons/privacy.svg?react";
-import { useEffect, useRef, useState } from "react";
 
 const links = [
   { label: "Cardápio", to: "/menu", icon: Food },
-  { label: "Carrinho", to: "/cart", icon: ShoppingCart },
   { label: "Pedido", to: "/order", icon: Shopping },
   { label: "Privacidade", to: "/lgpd", icon: Privacy },
 ];
@@ -50,13 +49,11 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="w-full shadow-sm top-0 z-50">
+    <nav className="w-full shadow-sm top-0 z-50 bg-background">
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-full flex items-center justify-center bg-primary shadow-md hover:bg-secondary  cursor-pointer">
-            <NavLink to="/home">
-              <Shrimp className="w-5 h-5 text-white" />
-            </NavLink>
+        <NavLink to="/" className="flex items-center gap-3">
+          <div className="w-11 h-11 rounded-full flex items-center justify-center bg-primary shadow-md transition-colors duration-200 hover:bg-secondary">
+            <Shrimp className="w-5 h-5 text-white" />
           </div>
 
           <div>
@@ -68,7 +65,7 @@ const Header = () => {
               Sabores da nossa terra
             </p>
           </div>
-        </div>
+        </NavLink>
 
         <div className="hidden sm:flex items-center gap-4">
           <div className="flex items-center gap-6">
@@ -76,7 +73,13 @@ const Header = () => {
               <NavLink
                 key={to}
                 to={to}
-                className="text-sm font-medium text-foreground transition-colors duration-200 hover:text-primary"
+                className={({ isActive }) =>
+                  `text-sm font-medium transition-colors duration-200 ${
+                    isActive
+                      ? "text-primary"
+                      : "text-foreground hover:text-primary"
+                  }`
+                }
               >
                 {label}
               </NavLink>
@@ -85,15 +88,24 @@ const Header = () => {
 
           <div className="flex items-center gap-2">
             <NavLink
-              to="/carrinho"
-              className="relative p-3 rounded-full  hover:bg-primary/10 "
+              to="/cart"
+              className={({ isActive }) =>
+                `relative p-3 rounded-full transition-colors duration-200 ${
+                  isActive
+                    ? "bg-primary/10 text-primary"
+                    : "hover:bg-primary/10 text-foreground"
+                }`
+              }
+              aria-label="Carrinho"
             >
-              <Shopping className="w-5 h-5 text-foreground" />
+              <ShoppingCart className="w-5 h-5" />
 
-              <span className="absolute top-1 right-1 flex items-center justify-center w-5 h-5 rounded-full bg-primary text-white text-xs font-bold shadow">
-                1
+              {/* mock items */}
+              <span className="absolute -top-1 -right-1 min-w-5 h-5 px-1 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">
+                0
               </span>
             </NavLink>
+
             <div
               ref={menuRef}
               className="flex items-center text-sm gap-2 text-black relative"
@@ -101,8 +113,10 @@ const Header = () => {
               <p>Richard</p>
 
               <button
-                className="p-3 rounded-full hover:bg-primary/10 cursor-pointer"
+                type="button"
+                className="p-3 rounded-full transition-colors duration-200 hover:bg-primary/10 cursor-pointer"
                 onClick={() => setMenu((prev) => !prev)}
+                aria-label="Menu do usuário"
               >
                 <User className="w-5 h-5 text-foreground" />
               </button>
@@ -111,7 +125,10 @@ const Header = () => {
                 <div className="absolute w-40 bg-white top-12 right-0 shadow-md rounded-xl border border-muted/10 p-1">
                   <ul className="flex flex-col gap-2">
                     <li>
-                      <button className="hover:bg-primary/10 p-2 w-full rounded-xl flex gap-4 items-center cursor-pointer text-sm">
+                      <button
+                        type="button"
+                        className="hover:bg-primary/10 p-2 w-full rounded-xl flex gap-4 items-center cursor-pointer text-sm transition-colors duration-200"
+                      >
                         <Exit className="w-5 h-5" />
                         Sair
                       </button>
@@ -125,31 +142,58 @@ const Header = () => {
 
         <div ref={mobileRef} className="relative sm:hidden z-10">
           <button
-            className="sm:hidden cursor-pointer bg-primary text-white p-3 rounded-full shadow-md transition-all duration-200 hover:bg-secondary "
+            type="button"
+            className="cursor-pointer bg-primary text-white p-3 rounded-full shadow-md transition-colors duration-200 hover:bg-secondary"
             onClick={() => setMobile((prev) => !prev)}
+            aria-label="Abrir menu"
           >
             <Bar className="w-5 h-5" />
           </button>
 
           {mobile && (
-            <div className="absolute w-40 bg-white top-12 right-0 shadow-md rounded-xl border border-muted/10 p-1 text-sm">
-              <ul className="flex flex-col">
-                <li className="flex flex-col gap-2">
-                  {links.map(({ label, to, icon: Icon }) => (
+            <div className="absolute w-48 bg-white top-12 right-0 shadow-md rounded-xl border border-muted/10 p-1 text-sm">
+              <ul className="flex flex-col gap-1">
+                {links.map(({ label, to, icon: Icon }) => (
+                  <li key={to}>
                     <NavLink
-                      key={label}
                       to={to}
-                      className="hover:bg-primary/10 py-2 px-4 w-full rounded-xl flex gap-4 items-center "
+                      className={({ isActive }) =>
+                        `py-2 px-4 w-full rounded-xl flex gap-4 items-center transition-colors duration-200 ${
+                          isActive
+                            ? "bg-primary/10 text-primary font-semibold"
+                            : "hover:bg-primary/10 text-foreground"
+                        }`
+                      }
                       onClick={closeMenus}
                     >
                       <Icon className="w-5 h-5" />
                       {label}
                     </NavLink>
-                  ))}
+                  </li>
+                ))}
+
+                <li>
+                  <NavLink
+                    to="/cart"
+                    className={({ isActive }) =>
+                      `py-2 px-4 w-full rounded-xl flex gap-4 items-center transition-colors duration-200 ${
+                        isActive
+                          ? "bg-primary/10 text-primary font-semibold"
+                          : "hover:bg-primary/10 text-foreground"
+                      }`
+                    }
+                    onClick={closeMenus}
+                  >
+                    <ShoppingCart className="w-5 h-5" />
+                    Carrinho
+                  </NavLink>
                 </li>
 
                 <li>
-                  <button className="hover:bg-primary/10 py-2 p-4 w-full rounded-xl flex gap-4 items-center cursor-pointer">
+                  <button
+                    type="button"
+                    className="hover:bg-primary/10 py-2 px-4 w-full rounded-xl flex gap-4 items-center cursor-pointer transition-colors duration-200"
+                  >
                     <Exit className="w-5 h-5" />
                     Sair
                   </button>
