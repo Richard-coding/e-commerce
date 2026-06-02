@@ -62,7 +62,7 @@ const CheckoutSection = () => {
                 </p>
               </div>
 
-              <button className="btn-ghost">Alterar</button>
+              <button type="button" className="btn-ghost">Alterar</button>
             </div>
           </div>
 

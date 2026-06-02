@@ -136,9 +136,13 @@ const OrderSection = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
-              <button className="btn-ghost">Falar com restaurante</button>
+              <button type="button" className="btn-ghost">
+                Falar com restaurante
+              </button>
 
-              <button className="btn-ghost">Ligar para suporte</button>
+              <button type="button" className="btn-ghost">
+                Ligar para suporte
+              </button>
             </div>
           </div>
 

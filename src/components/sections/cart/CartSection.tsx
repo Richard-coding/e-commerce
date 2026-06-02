@@ -76,13 +76,13 @@ const Cart = () => {
 
                   <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
                     <div className="flex items-center justify-center sm:justify-start gap-5 border border-muted/20 rounded-full px-5 py-2">
-                      <button className="text-xl text-foreground/60 hover:text-primary transition-all duration-200">
+                      <button type="button" className="text-xl text-foreground/60 hover:text-primary transition-all duration-200">
                         -
                       </button>
 
                       <span className="font-semibold">{item.quantity}</span>
 
-                      <button className="text-xl text-foreground/60 hover:text-primary transition-all duration-200">
+                      <button type="button" className="text-xl text-foreground/60 hover:text-primary transition-all duration-200">
                         +
                       </button>
                     </div>
@@ -122,7 +122,7 @@ const Cart = () => {
                 className="input-base flex-1 rounded-2xl border-muted/20"
               />
 
-              <button className="btn-ghost">Aplicar</button>
+              <button type="button" className="btn-ghost">Aplicar</button>
             </div>
           </div>
         </div>
