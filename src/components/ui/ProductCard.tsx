@@ -1,3 +1,5 @@
+import { Plus } from "lucide-react";
+
 interface Product {
   id: number;
   title: string;
@@ -37,8 +39,11 @@ const ProductCard = ({ product }: { product: Product }) => {
             R$ {product.price.toFixed(2).replace(".", ",")}
           </p>
 
-          <button type="button" className="btn-primary w-full">
-            + Adicionar
+          <button
+            type="button"
+            className="btn-primary w-full flex items-center justify-center gap-2"
+          >
+            <Plus className="w-4 h-4" /> Adicionar
           </button>
         </div>
       </div>

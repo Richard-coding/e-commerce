@@ -1,19 +1,22 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
+import {
+  Menu,
+  X,
+  UserIcon,
+  LogOut,
+  ShoppingCartIcon,
+  ShieldCheck,
+  UtensilsCrossed,
+  ReceiptText,
+} from "lucide-react";
 
 import Shrimp from "@/assets/icons/shrimp.svg?react";
-import Bar from "@/assets/icons/bar.svg?react";
-import User from "@/assets/icons/user.svg?react";
-import Shopping from "@/assets/icons/shopping.svg?react";
-import Exit from "@/assets/icons/exit.svg?react";
-import Food from "@/assets/icons/food.svg?react";
-import ShoppingCart from "@/assets/icons/shopping-cart.svg?react";
-import Privacy from "@/assets/icons/privacy.svg?react";
 
 const links = [
-  { label: "Cardápio", to: "/menu", icon: Food },
-  { label: "Pedido", to: "/order", icon: Shopping },
-  { label: "Privacidade", to: "/lgpd", icon: Privacy },
+  { label: "Cardápio", to: "/menu", icon: UtensilsCrossed },
+  { label: "Pedido", to: "/order", icon: ReceiptText },
+  { label: "Privacidade", to: "/lgpd", icon: ShieldCheck },
 ];
 
 const Header = () => {
@@ -96,9 +99,7 @@ const Header = () => {
               }
               aria-label="Carrinho"
             >
-              <ShoppingCart className="w-5 h-5" />
-
-              {/* mock items */}
+              <ShoppingCartIcon className="w-5 h-5" />
               <span className="absolute -top-1 -right-1 min-w-5 h-5 px-1 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">
                 0
               </span>
@@ -116,7 +117,7 @@ const Header = () => {
                 onClick={() => setMenu((prev) => !prev)}
                 aria-label="Menu do usuário"
               >
-                <User className="w-5 h-5 text-foreground" />
+                <UserIcon className="w-5 h-5 text-foreground" />
               </button>
 
               {menu && (
@@ -127,7 +128,7 @@ const Header = () => {
                         type="button"
                         className="hover:bg-primary/10 p-2 w-full rounded-xl flex gap-4 items-center cursor-pointer text-sm transition-colors duration-200"
                       >
-                        <Exit className="w-5 h-5" />
+                        <LogOut className="w-5 h-5" />
                         Sair
                       </button>
                     </li>
@@ -145,7 +146,7 @@ const Header = () => {
             onClick={() => setMobile((prev) => !prev)}
             aria-label="Abrir menu"
           >
-            <Bar className="w-5 h-5" />
+            {mobile ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
 
           {mobile && (
@@ -185,7 +186,7 @@ const Header = () => {
                     <span className="absolute -top-2 left-8 min-w-5 h-5 px-1 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">
                       1
                     </span>
-                    <ShoppingCart className="w-5 h-5" />
+                    <ShoppingCartIcon className="w-5 h-5" />
                     Carrinho
                   </NavLink>
                 </li>
@@ -195,7 +196,7 @@ const Header = () => {
                     type="button"
                     className="hover:bg-primary/10 py-2 px-4 w-full rounded-xl flex gap-4 items-center cursor-pointer transition-colors duration-200"
                   >
-                    <Exit className="w-5 h-5" />
+                    <LogOut className="w-5 h-5" />
                     Sair
                   </button>
                 </li>

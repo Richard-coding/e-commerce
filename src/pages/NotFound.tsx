@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import Food from "@/assets/icons/food.svg?react";
+import { CircleAlert, Home } from "lucide-react";
 
 const NotFound = () => {
   return (
     <main className="flex items-center justify-center px-6 py-10 app-background">
       <section className="w-full max-w-2xl rounded-3xl  p-8 text-center">
         <span className="mx-auto w-fit  border border-primary/20 px-4 py-2 rounded-full text-xs font-bold text-primary uppercase inline-flex items-center gap-2">
-          <Food className="w-3 h-3" />
+          <CircleAlert className="w-3 h-3" />
           Você se perdeu no caminho
         </span>
 
@@ -27,6 +27,7 @@ const NotFound = () => {
           to="/"
           className="mt-8 inline-flex items-center justify-center rounded-2xl bg-primary px-6 py-3 font-semibold text-white transition-all duration-200 hover:bg-secondary"
         >
+          <Home className="w-4 h-4 mr-2" />
           Voltar para Home
         </Link>
 

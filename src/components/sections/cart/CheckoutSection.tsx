@@ -1,4 +1,13 @@
-import Food from "@/assets/icons/food.svg?react";
+import {
+  CircleCheck,
+  Clock,
+  CreditCard,
+  MapPin,
+  MessageSquareText,
+  Receipt,
+  ShieldCheck,
+  TicketPercent,
+} from "lucide-react";
 import { NavLink } from "react-router-dom";
 
 const CheckoutSection = () => {
@@ -8,7 +17,7 @@ const CheckoutSection = () => {
         <div className="rounded-3xl min-h-72 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
           <div className="p-6">
             <span className="bg-white/10 border border-white/10 px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-2">
-              <Food className="w-3 h-3" />
+              <CircleCheck className="w-3 h-3" />
               Etapa final
             </span>
 
@@ -23,17 +32,17 @@ const CheckoutSection = () => {
 
             <div className="flex flex-wrap gap-6 mt-6 text-sm text-white/70">
               <span className="flex items-center gap-2">
-                <Food className="w-4 h-4" />
+                <MapPin className="w-4 h-4" />
                 Recife — Boa Viagem
               </span>
 
               <span className="flex items-center gap-2">
-                <Food className="w-4 h-4" />
+                <Clock className="w-4 h-4" />
                 35–45 min
               </span>
 
               <span className="flex items-center gap-2">
-                <Food className="w-4 h-4" />
+                <TicketPercent className="w-4 h-4" />
                 Frete grátis acima de R$ 60
               </span>
             </div>
@@ -42,10 +51,10 @@ const CheckoutSection = () => {
       </div>
 
       <div className="container-base">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8\">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
           <div className="card-base rounded-3xl border-muted/20 p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Food className="w-5 h-5 text-primary" />
+              <MapPin className="w-5 h-5 text-primary" />
               <div>
                 <h2 className="text-2xl font-bold text-secondary">
                   Endereço de entrega
@@ -72,7 +81,7 @@ const CheckoutSection = () => {
 
           <div className="card-base rounded-3xl border-muted/20 p-6">
             <div className="flex items-center gap-2 mb-5">
-              <Food className="w-5 h-5 text-primary" />
+              <CreditCard className="w-5 h-5 text-primary" />
               <div>
                 <h2 className="text-2xl font-bold text-secondary">
                   Forma de pagamento
@@ -94,7 +103,7 @@ const CheckoutSection = () => {
                   }`}
                 >
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <Food className="w-5 h-5 text-primary" />
+                    <CreditCard className="w-5 h-5 text-primary" />
                   </div>
 
                   <p className="font-bold text-secondary">{payment}</p>
@@ -108,7 +117,7 @@ const CheckoutSection = () => {
 
           <div className="card-base rounded-3xl border-muted/20 p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Food className="w-5 h-5 text-primary" />
+              <MessageSquareText className="w-5 h-5 text-primary" />
               <div>
                 <h2 className="text-2xl font-bold text-secondary">
                   Observações
@@ -128,9 +137,12 @@ const CheckoutSection = () => {
 
         <div className="flex flex-col gap-6">
           <div className="card-base rounded-3xl border-muted/20 p-6">
-            <h3 className="text-3xl font-bold text-secondary">
-              Resumo do pedido
-            </h3>
+            <div className="flex items-center gap-2 mb-4">
+              <Receipt className="w-5 h-5 text-primary" />
+              <h3 className="text-3xl font-bold text-secondary">
+                Resumo do pedido
+              </h3>
+            </div>
 
             <p className="text-sm text-foreground/60 mt-1">
               Tudo certo para confirmar.
@@ -164,18 +176,19 @@ const CheckoutSection = () => {
 
             <NavLink
               to="/order"
-              className="btn-primary w-full flex items-center justify-center mt-4"
+              className="btn-primary w-full flex items-center justify-center gap-2 mt-4"
             >
+              <CircleCheck className="w-5 h-5" />
               Confirmar pedido
             </NavLink>
 
             <div className=" text-foreground/60 text-sm mt-4">
               <div className="flex gap-2 items-center">
-                <Food className="w-3 h-3" />
+                <CreditCard className="w-3 h-3" />
                 <p> Pagamento seguro</p>
               </div>
               <div className="flex gap-2 items-center">
-                <Food className="w-3 h-3" />
+                <ShieldCheck className="w-3 h-3" />
                 <p> Cancelamento em até 5 min</p>
               </div>
             </div>
@@ -188,7 +201,7 @@ const CheckoutSection = () => {
 
             <div className="flex flex-col gap-4 text-sm">
               <div className="flex gap-3">
-                <Food className="w-5 h-5 text-primary shrink-0" />
+                <Clock className="w-5 h-5 text-primary shrink-0" />
                 <div>
                   <p className="font-semibold">Tempo estimado</p>
                   <p className="text-foreground/60">35–45 minutos</p>
@@ -196,7 +209,7 @@ const CheckoutSection = () => {
               </div>
 
               <div className="flex gap-3">
-                <Food className="w-5 h-5 text-primary shrink-0" />
+                <CreditCard className="w-5 h-5 text-primary shrink-0" />
                 <div>
                   <p className="font-semibold">Pagamento seguro</p>
                   <p className="text-foreground/60">
@@ -206,7 +219,7 @@ const CheckoutSection = () => {
               </div>
 
               <div className="flex gap-3">
-                <Food className="w-5 h-5 text-primary shrink-0" />
+                <ShieldCheck className="w-5 h-5 text-primary shrink-0" />
                 <div>
                   <p className="font-semibold">Compra protegida</p>
                   <p className="text-foreground/60">

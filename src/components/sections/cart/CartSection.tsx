@@ -1,4 +1,13 @@
-import Food from "@/assets/icons/food.svg?react";
+import {
+  Clock,
+  MapPin,
+  Minus,
+  Plus,
+  Receipt,
+  TicketPercent,
+  CreditCard,
+  ShieldCheck,
+} from "lucide-react";
 import { cartItems } from "@/data/cart";
 import { NavLink } from "react-router-dom";
 
@@ -9,8 +18,7 @@ const Cart = () => {
         <div className="rounded-3xl min-h-72 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
           <div className="p-6">
             <span className="bg-white/10 border border-white/10 px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-2">
-              <Food className="w-3 h-3" />
-              {cartItems.length} itens adicionados
+              <Receipt className="w-4 h-4" />
             </span>
 
             <h1 className="text-5xl font-bold mt-5">Seu Carrinho</h1>
@@ -21,15 +29,15 @@ const Cart = () => {
 
             <div className="flex flex-wrap gap-6 mt-6 text-sm text-white/70">
               <span className="flex items-center gap-2">
-                <Food className="w-4 h-4" />
+                <MapPin className="w-4 h-4" />
                 Entrega em Recife, PE
               </span>
               <span className="flex items-center gap-2">
-                <Food className="w-4 h-4" />
+                <Clock className="w-4 h-4" />
                 ~35 min de preparo
               </span>
               <span className="flex items-center gap-2">
-                <Food className="w-4 h-4" />
+                <TicketPercent className="w-4 h-4" />
                 Frete grátis acima de R$ 60
               </span>
             </div>
@@ -79,18 +87,18 @@ const Cart = () => {
                       <div className="flex items-center justify-center sm:justify-start gap-5 border border-muted/20 rounded-full px-5 py-2">
                         <button
                           type="button"
-                          className="text-xl text-foreground/60 hover:text-primary transition-all duration-200"
+                          className="text-foreground/60 hover:text-primary transition-all duration-200"
                         >
-                          -
+                          <Minus className="w-4 h-4" />
                         </button>
 
                         <span className="font-semibold">{item.quantity}</span>
 
                         <button
                           type="button"
-                          className="text-xl text-foreground/60 hover:text-primary transition-all duration-200"
+                          className="text-foreground/60 hover:text-primary transition-all duration-200"
                         >
-                          +
+                          <Plus className="w-4 h-4" />
                         </button>
                       </div>
 
@@ -116,7 +124,7 @@ const Cart = () => {
 
             <div className="card-base rounded-3xl border-muted/20 p-5">
               <div className="flex items-center gap-2 mb-4">
-                <Food className="w-4 h-4 text-primary" />
+                <TicketPercent className="w-4 h-4 text-primary" />
                 <h3 className="font-semibold text-secondary">
                   Cupom de desconto
                 </h3>
@@ -181,11 +189,11 @@ const Cart = () => {
 
               <div className=" text-foreground/60 text-sm mt-4">
                 <div className="flex gap-2 items-center">
-                  <Food className="w-3 h-3" />
+                  <CreditCard className="w-3 h-3" />
                   <p> Pagamento seguro</p>
                 </div>
                 <div className="flex gap-2 items-center">
-                  <Food className="w-3 h-3" />
+                  <ShieldCheck className="w-3 h-3" />
                   <p> Cancelamento em até 5 min</p>
                 </div>
               </div>
@@ -198,7 +206,7 @@ const Cart = () => {
 
               <div className="flex flex-col gap-5 text-sm ">
                 <div className="flex gap-3">
-                  <Food className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold">Recife — Boa Viagem</p>
                     <p className="text-foreground/60">
@@ -208,7 +216,7 @@ const Cart = () => {
                 </div>
 
                 <div className="flex gap-3">
-                  <Food className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <Clock className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold">~35 min</p>
                     <p className="text-foreground/60">Preparo + entrega</p>
@@ -216,7 +224,7 @@ const Cart = () => {
                 </div>
 
                 <div className="flex gap-3">
-                  <Food className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <TicketPercent className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold">Frete grátis acima de R$ 60</p>
                     <p className="text-foreground/60">Faltam R$ 0,00</p>

@@ -57,7 +57,7 @@
   }
 
   .btn-primary {
-    @apply bg-primary text-white rounded-xl px-4 py-3 font-semibold hover:bg-primary-hover transition-colors;
+    @apply bg-primary text-white rounded-xl px-4 py-3 font-semibold hover:bg-primary-hover transition-colors cursor-pointer;
   }
 
   .btn-secondary {

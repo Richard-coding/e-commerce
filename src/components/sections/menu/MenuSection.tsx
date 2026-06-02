@@ -55,14 +55,14 @@ const MenuSection = () => {
           <div className="flex gap-3 overflow-x-auto pb-2">
             {categories.map((category, index) => (
               <button
-                key={category}
+                key={index}
                 className={`px-5 py-3 rounded-xl border text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
                   index === 0
                     ? "bg-primary text-white border-primary"
                     : "btn-ghost"
                 }`}
               >
-                {category}
+                {category.label}
               </button>
             ))}
           </div>
