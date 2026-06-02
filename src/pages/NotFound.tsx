@@ -18,7 +18,7 @@ const NotFound = () => {
           Página não encontrada
         </h1>
 
-        <p className="mt-4 text-foreground/70 leading-relaxed">
+        <p className="mt-4 text-soft leading-relaxed">
           A página que você tentou acessar não existe ou foi movida. Que tal
           voltar para a página inicial?
         </p>

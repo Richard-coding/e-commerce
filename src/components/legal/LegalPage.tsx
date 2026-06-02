@@ -42,7 +42,7 @@ const LegalPage = ({
         {items.map((item) => (
           <div
             key={item.title}
-            className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6"
+            className="card-base rounded-3xl border-muted/20 p-6"
           >
             <div className="flex items-center gap-4 mb-4">
               <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
@@ -54,9 +54,7 @@ const LegalPage = ({
               </h2>
             </div>
 
-            <p className="text-foreground/70 leading-relaxed">
-              {item.description}
-            </p>
+            <p className="text-soft leading-relaxed">{item.description}</p>
           </div>
         ))}
       </div>

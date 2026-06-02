@@ -10,8 +10,7 @@ interface Product {
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <div className="h-full bg-white rounded-2xl overflow-hidden border border-muted/20 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
-      
+    <div className="card-hover h-full overflow-hidden transition-all duration-300 flex flex-col border-muted/20">
       <div className="relative h-52 overflow-hidden">
         <img
           src={product.image}
@@ -25,13 +24,10 @@ const ProductCard = ({ product }: { product: Product }) => {
       </div>
 
       <div className="p-4 flex flex-col flex-1 gap-3">
-        
         <div>
-          <h3 className="text-lg font-bold text-secondary">
-            {product.title}
-          </h3>
+          <h3 className="text-lg font-bold text-secondary">{product.title}</h3>
 
-          <p className="text-sm text-foreground/70 mt-1 leading-relaxed">
+          <p className="text-sm text-soft mt-1 leading-relaxed">
             {product.description}
           </p>
         </div>
@@ -41,9 +37,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             R$ {product.price.toFixed(2).replace(".", ",")}
           </p>
 
-          <button className="btn-primary w-full">
-            + Adicionar
-          </button>
+          <button className="btn-primary w-full">+ Adicionar</button>
         </div>
       </div>
     </div>

@@ -41,7 +41,7 @@ const OrderSection = () => {
 
       <div className="max-w-7xl mx-auto pt-10">
         {/* TIMELINE */}
-        <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6">
+        <div className="card-base rounded-3xl border-muted/20 p-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
             <div>
               <p className="text-primary uppercase text-xs font-bold tracking-wider">
@@ -107,7 +107,7 @@ const OrderSection = () => {
         {/* CONTENT */}
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-8">
           {/* STATUS */}
-          <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6">
+          <div className="card-base rounded-3xl border-muted/20 p-6">
             <div className="flex items-center gap-2 mb-4">
               <Food className="w-5 h-5 text-primary" />
 
@@ -127,7 +127,7 @@ const OrderSection = () => {
                     Em preparação na cozinha
                   </h3>
 
-                  <p className="text-sm text-foreground/70 mt-2">
+                  <p className="text-sm text-soft mt-2">
                     Nossa cozinha está preparando seu pedido com todo o carinho.
                     Em breve ele seguirá para entrega.
                   </p>
@@ -136,18 +136,14 @@ const OrderSection = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
-              <button className="btn-ghost">
-                Falar com restaurante
-              </button>
+              <button className="btn-ghost">Falar com restaurante</button>
 
-              <button className="btn-ghost">
-                Ligar para suporte
-              </button>
+              <button className="btn-ghost">Ligar para suporte</button>
             </div>
           </div>
 
           {/* DELIVERY */}
-          <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6">
+          <div className="card-base rounded-3xl border-muted/20 p-6">
             <h3 className="text-2xl font-bold text-secondary mb-6">Entrega</h3>
 
             <div className="flex flex-col gap-5 text-sm">
@@ -185,7 +181,7 @@ const OrderSection = () => {
         </div>
 
         {/* FINAL MESSAGE */}
-        <div className="mt-8 bg-white rounded-3xl border border-muted/20 p-8 text-center shadow-sm">
+        <div className="mt-8 card-base rounded-3xl border-muted/20 p-8 text-center">
           <div className="w-12 h-12 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
             <Food className="w-5 h-5 text-primary" />
           </div>
@@ -194,7 +190,7 @@ const OrderSection = () => {
             Estamos preparando seu pedido
           </h3>
 
-          <p className="text-foreground/70 mt-2">
+          <p className="text-soft mt-2">
             Em breve os sabores do Nordeste estarão chegando até você.
           </p>
         </div>

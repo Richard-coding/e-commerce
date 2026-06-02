@@ -75,9 +75,7 @@ const Header = () => {
                 to={to}
                 className={({ isActive }) =>
                   `text-sm font-medium transition-colors duration-200 ${
-                    isActive
-                      ? "text-primary"
-                      : "text-foreground hover:text-primary"
+                    isActive ? "text-primary" : "link-base"
                   }`
                 }
               >

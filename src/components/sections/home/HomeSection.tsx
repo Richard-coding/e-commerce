@@ -54,7 +54,7 @@ const HomeSection = () => {
             </NavLink>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 text-center text-sm text-foreground/70">
+          <div className="grid grid-cols-2 gap-4 text-center text-sm text-soft">
             <div className="bg-white rounded-xl py-3 border border-muted/20 flex items-center justify-center gap-2">
               <p>Entrega rápida</p>
             </div>

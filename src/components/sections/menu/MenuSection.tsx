@@ -71,7 +71,7 @@ const MenuSection = () => {
         {products.map((item) => (
           <div
             key={item.id}
-            className="bg-white rounded-2xl overflow-hidden border border-muted/20 shadow-sm hover:shadow-md transition-all duration-300"
+            className="card-hover overflow-hidden transition-all duration-300 border-muted/20"
           >
             <div className="relative h-56 overflow-hidden">
               <img
@@ -99,7 +99,7 @@ const MenuSection = () => {
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-foreground/70 mt-2 leading-relaxed">
+                <p className="text-sm text-soft mt-2 leading-relaxed">
                   {item.description}
                 </p>
               </div>

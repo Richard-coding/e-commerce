@@ -32,7 +32,7 @@ const Login = () => {
 
   return (
     <main className="flex min-h-dvh items-center justify-center px-4 py-8 border ">
-      <section className="w-full max-w-96 rounded-2xl bg-white p-6 shadow border border-muted/20">
+      <section className="card-base w-full max-w-96 p-6 border-muted/20 shadow">
         <Brand />
         <div className="mb-6 text-center">
           <h2 className="text-3xl font-bold ">Entrar</h2>
@@ -66,14 +66,14 @@ const Login = () => {
             </label>
           </div>
 
-          <Link to="/forget" className="text-xs text-primary hover:underline block">
+          <Link
+            to="/forget"
+            className="text-xs text-primary hover:underline block"
+          >
             Esqueci minha senha
           </Link>
 
-          <button
-            type="submit"
-            className="btn-primary w-full"
-          >
+          <button type="submit" className="btn-primary w-full">
             Entrar
           </button>
         </form>

@@ -41,7 +41,7 @@ const Cart = () => {
             {cartItems.map((item) => (
               <div
                 key={item.id}
-                className={`relative bg-white rounded-3xl border shadow-sm p-4 grid grid-cols-1 sm:grid-cols-[120px_1fr] sm:items-center gap-4 transition-all duration-200 ${
+                className={`card-base rounded-3xl p-4 grid grid-cols-1 sm:grid-cols-[120px_1fr] sm:items-center gap-4 transition-all duration-200 ${
                   item.unavailable
                     ? "border-red-200 opacity-75"
                     : "border-muted/20 hover:shadow-md"
@@ -68,7 +68,7 @@ const Cart = () => {
                         {item.title}
                       </h3>
 
-                      <p className="text-sm text-foreground/70 mt-2 max-w-xl leading-relaxed">
+                      <p className="text-sm text-soft mt-2 max-w-xl leading-relaxed">
                         {item.description}
                       </p>
                     </div>
@@ -107,7 +107,7 @@ const Cart = () => {
             ))}
           </div>
 
-          <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-5">
+          <div className="card-base rounded-3xl border-muted/20 p-5">
             <div className="flex items-center gap-2 mb-4">
               <Food className="w-4 h-4 text-primary" />
               <h3 className="font-semibold text-secondary">
@@ -119,18 +119,16 @@ const Cart = () => {
               <input
                 type="text"
                 placeholder="Digite seu cupom..."
-                className="flex-1 border border-muted/20 rounded-2xl px-4 py-3 outline-none focus:border-primary"
+                className="input-base flex-1 rounded-2xl border-muted/20"
               />
 
-              <button className="btn-ghost">
-                Aplicar
-              </button>
+              <button className="btn-ghost">Aplicar</button>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col gap-6 ">
-          <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6">
+          <div className="card-base rounded-3xl border-muted/20 p-6">
             <h3 className="text-3xl font-bold text-secondary">
               Resumo do pedido
             </h3>
@@ -141,17 +139,17 @@ const Cart = () => {
 
             <div className="flex flex-col gap-4 mt-8 text-md">
               <div className="flex items-center justify-between ">
-                <span className="text-foreground/70">Subtotal</span>
+                <span className="text-soft">Subtotal</span>
                 <span className="font-medium text-lg">R$ 73,43</span>
               </div>
 
               <div className="flex items-center justify-between ">
-                <span className="text-foreground/70">Taxa de entrega</span>
+                <span className="text-soft">Taxa de entrega</span>
                 <span className="font-medium text-lg">R$ 6,90</span>
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-foreground/70">Desconto</span>
+                <span className="text-soft">Desconto</span>
                 <span className="font-medium text-primary text-lg">
                   - R$ 2,49
                 </span>
@@ -184,7 +182,7 @@ const Cart = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6">
+          <div className="card-base rounded-3xl border-muted/20 p-6">
             <h3 className="text-2xl font-bold text-secondary mb-6">
               Detalhes da entrega
             </h3>

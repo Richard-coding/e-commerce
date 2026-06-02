@@ -43,7 +43,7 @@ const CartItem = ({
           <div>
             <h3 className="text-xl font-bold text-secondary">{title}</h3>
 
-            <p className="text-sm text-foreground/70 mt-1 max-w-xl leading-relaxed">
+            <p className="text-sm text-soft mt-1 max-w-xl leading-relaxed">
               {description}
             </p>
           </div>

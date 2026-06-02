@@ -12,17 +12,17 @@ const ForgetPassword = () => {
     e.preventDefault();
 
     if (!email) {
-      toast.error("Informe seu e-mail", {id: "error"});
+      toast.error("Informe seu e-mail", { id: "error" });
       return;
     }
 
-    toast.success("Instruções enviadas para seu e-mail", {id: "sucess"});
+    toast.success("Instruções enviadas para seu e-mail", { id: "sucess" });
     setEmail("");
   };
 
   return (
     <main className="flex min-h-dvh items-center justify-center px-4 py-8">
-      <section className="w-full max-w-96 rounded-2xl bg-white p-6 shadow border border-muted/20">
+      <section className="card-base w-full max-w-96 p-6 border-muted/20 shadow">
         <Brand />
 
         <div className="mb-6 text-center">
@@ -44,10 +44,7 @@ const ForgetPassword = () => {
             />
           </label>
 
-          <button
-            type="submit"
-            className="btn-primary w-full"
-          >
+          <button type="submit" className="btn-primary w-full">
             Enviar instruções
           </button>
         </form>

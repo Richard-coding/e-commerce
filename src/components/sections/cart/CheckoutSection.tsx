@@ -41,7 +41,7 @@ const CheckoutSection = () => {
 
       <div className="max-w-7xl mx-auto py-10 grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
         <div className="flex flex-col gap-6">
-          <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6">
+          <div className="card-base rounded-3xl border-muted/20 p-6">
             <div className="flex items-center gap-2 mb-4">
               <Food className="w-5 h-5 text-primary" />
               <div>
@@ -62,13 +62,11 @@ const CheckoutSection = () => {
                 </p>
               </div>
 
-              <button className="btn-ghost">
-                Alterar
-              </button>
+              <button className="btn-ghost">Alterar</button>
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6">
+          <div className="card-base rounded-3xl border-muted/20 p-6">
             <div className="flex items-center gap-2 mb-5">
               <Food className="w-5 h-5 text-primary" />
               <div>
@@ -104,7 +102,7 @@ const CheckoutSection = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6">
+          <div className="card-base rounded-3xl border-muted/20 p-6">
             <div className="flex items-center gap-2 mb-4">
               <Food className="w-5 h-5 text-primary" />
               <div>
@@ -119,13 +117,13 @@ const CheckoutSection = () => {
 
             <textarea
               placeholder="Ex: tirar cebola, pouco molho, entregar na portaria..."
-              className="w-full min-h-32 rounded-2xl border border-muted/20 px-4 py-3 outline-none focus:border-primary resize-none bg-transparent"
+              className="input-base w-full min-h-32 rounded-2xl border-muted/20 resize-none bg-transparent"
             />
           </div>
         </div>
 
         <div className="flex flex-col gap-6">
-          <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6">
+          <div className="card-base rounded-3xl border-muted/20 p-6">
             <h3 className="text-3xl font-bold text-secondary">
               Resumo do pedido
             </h3>
@@ -136,17 +134,17 @@ const CheckoutSection = () => {
 
             <div className="flex flex-col gap-4 mt-8 text-md">
               <div className="flex items-center justify-between">
-                <span className="text-foreground/70">Subtotal</span>
+                <span className="text-soft">Subtotal</span>
                 <span className="font-medium text-lg">R$ 73,43</span>
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-foreground/70">Taxa de entrega</span>
+                <span className="text-soft">Taxa de entrega</span>
                 <span className="font-medium text-lg">R$ 6,90</span>
               </div>
 
               <div className="flex items-center justify-between">
-                <span className="text-foreground/70">Desconto</span>
+                <span className="text-soft">Desconto</span>
                 <span className="font-medium text-primary text-lg">
                   - R$ 2,49
                 </span>
@@ -179,7 +177,7 @@ const CheckoutSection = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl border border-muted/20 shadow-sm p-6">
+          <div className="card-base rounded-3xl border-muted/20 p-6">
             <h3 className="text-2xl font-bold text-secondary mb-5">
               Detalhes da entrega
             </h3>
