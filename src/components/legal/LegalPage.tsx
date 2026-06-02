@@ -21,7 +21,7 @@ export default function LegalPage({
   return (
     <section className="section-base min-h-screen">
       <div className="container-base flex flex-col gap-8">
-        <div className="rounded-3xl bg-linear-to-r from-[#4d2b1f] to-[#6a4030] p-8 text-white">
+        <div className="rounded-3xl min-h-72 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] p-8 text-white">
           <h1 className="text-3xl font-bold mb-3">{title}</h1>
 
           <p className="text-white/80 max-w-2xl leading-relaxed">
@@ -29,7 +29,7 @@ export default function LegalPage({
           </p>
         </div>
 
-        <div className="grid gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {items.map((item) => {
             const Icon = item.icon;
 

@@ -48,187 +48,199 @@ const CheckoutSection = () => {
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="container-base">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
-          <div className="card-base rounded-3xl border-muted/20 p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <MapPin className="w-5 h-5 text-primary" />
-              <div>
-                <h2 className="text-2xl font-bold text-secondary">
-                  Endereço de entrega
-                </h2>
-                <p className="text-sm text-foreground/60">
-                  Confirme onde devemos entregar seu pedido.
-                </p>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8 pt-10">
+          <div className="flex flex-col gap-6">
+            <div className="card-base rounded-3xl border-muted/20 p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <MapPin className="w-5 h-5 text-primary" />
 
-            <div className="border border-muted/20 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <p className="font-semibold">Casa</p>
-                <p className="text-sm text-foreground/60">
-                  Av. Boa Viagem, 1234 — Recife, PE
-                </p>
-              </div>
+                <div>
+                  <h2 className="text-2xl font-bold text-secondary">
+                    Endereço de entrega
+                  </h2>
 
-              <button type="button" className="btn-ghost">
-                Alterar
-              </button>
-            </div>
-          </div>
-
-          <div className="card-base rounded-3xl border-muted/20 p-6">
-            <div className="flex items-center gap-2 mb-5">
-              <CreditCard className="w-5 h-5 text-primary" />
-              <div>
-                <h2 className="text-2xl font-bold text-secondary">
-                  Forma de pagamento
-                </h2>
-                <p className="text-sm text-foreground/60">
-                  Escolha como prefere pagar.
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {["PIX", "Cartão", "Dinheiro"].map((payment, index) => (
-                <button
-                  key={payment}
-                  className={`rounded-2xl border p-5 text-left transition-all duration-200 ${
-                    index === 0
-                      ? "border-primary bg-primary/5"
-                      : "border-muted/20 hover:border-primary hover:bg-primary/5"
-                  }`}
-                >
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4">
-                    <CreditCard className="w-5 h-5 text-primary" />
-                  </div>
-
-                  <p className="font-bold text-secondary">{payment}</p>
-                  <p className="text-sm text-foreground/60 mt-1">
-                    Pagamento na entrega
+                  <p className="text-sm text-foreground/60">
+                    Confirme onde devemos entregar seu pedido.
                   </p>
+                </div>
+              </div>
+
+              <div className="border border-muted/20 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <p className="font-semibold">Casa</p>
+                  <p className="text-sm text-foreground/60">
+                    Av. Boa Viagem, 1234 — Recife, PE
+                  </p>
+                </div>
+
+                <button type="button" className="btn-ghost">
+                  Alterar
                 </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="card-base rounded-3xl border-muted/20 p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <MessageSquareText className="w-5 h-5 text-primary" />
-              <div>
-                <h2 className="text-2xl font-bold text-secondary">
-                  Observações
-                </h2>
-                <p className="text-sm text-foreground/60">
-                  Alguma instrução especial para o pedido?
-                </p>
               </div>
             </div>
 
-            <textarea
-              placeholder="Ex: tirar cebola, pouco molho, entregar na portaria..."
-              className="input-base w-full min-h-32 rounded-2xl border-muted/20 resize-none bg-transparent"
-            />
-          </div>
-        </div>
+            <div className="card-base rounded-3xl border-muted/20 p-6">
+              <div className="flex items-center gap-2 mb-5">
+                <CreditCard className="w-5 h-5 text-primary" />
 
-        <div className="flex flex-col gap-6">
-          <div className="card-base rounded-3xl border-muted/20 p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <Receipt className="w-5 h-5 text-primary" />
-              <h3 className="text-3xl font-bold text-secondary">
-                Resumo do pedido
+                <div>
+                  <h2 className="text-2xl font-bold text-secondary">
+                    Forma de pagamento
+                  </h2>
+
+                  <p className="text-sm text-foreground/60">
+                    Escolha como prefere pagar.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {["PIX", "Cartão", "Dinheiro"].map((payment, index) => (
+                  <button
+                    type="button"
+                    key={payment}
+                    className={`rounded-2xl border p-5 text-left transition-all duration-200 ${
+                      index === 0
+                        ? "border-primary bg-primary/5"
+                        : "border-muted/20 hover:border-primary hover:bg-primary/5"
+                    }`}
+                  >
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+                      <CreditCard className="w-5 h-5 text-primary" />
+                    </div>
+
+                    <p className="font-bold text-secondary">{payment}</p>
+                    <p className="text-sm text-foreground/60 mt-1">
+                      Pagamento na entrega
+                    </p>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="card-base rounded-3xl border-muted/20 p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <MessageSquareText className="w-5 h-5 text-primary" />
+
+                <div>
+                  <h2 className="text-2xl font-bold text-secondary">
+                    Observações
+                  </h2>
+
+                  <p className="text-sm text-foreground/60">
+                    Alguma instrução especial para o pedido?
+                  </p>
+                </div>
+              </div>
+
+              <textarea
+                placeholder="Ex: tirar cebola, pouco molho, entregar na portaria..."
+                className="input-base w-full min-h-32 rounded-2xl border-muted/20 resize-none bg-transparent"
+              />
+            </div>
+          </div>
+
+          <aside className="grid gap-6">
+            <div className="card-base rounded-3xl border-muted/20 p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Receipt className="w-5 h-5 text-primary" />
+
+                <h3 className="text-3xl font-bold text-secondary">
+                  Resumo do pedido
+                </h3>
+              </div>
+
+              <p className="text-sm text-foreground/60 mt-1">
+                Tudo certo para confirmar.
+              </p>
+
+              <div className="flex flex-col gap-4 mt-8 text-md">
+                <div className="flex items-center justify-between">
+                  <span className="text-soft">Subtotal</span>
+                  <span className="font-medium text-lg">R$ 73,43</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-soft">Taxa de entrega</span>
+                  <span className="font-medium text-lg">R$ 6,90</span>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <span className="text-soft">Desconto</span>
+                  <span className="font-medium text-primary text-lg">
+                    - R$ 2,49
+                  </span>
+                </div>
+              </div>
+
+              <div className="border-t border-muted/20 my-6" />
+
+              <div className="flex items-center justify-between font-bold">
+                <span className="text-2xl text-secondary">Total</span>
+                <strong className="text-2xl text-primary">R$ 77,84</strong>
+              </div>
+
+              <NavLink
+                to="/order"
+                className="btn-primary w-full flex items-center justify-center gap-2 mt-4"
+              >
+                <CircleCheck className="w-5 h-5" />
+                Confirmar pedido
+              </NavLink>
+
+              <div className="text-foreground/60 text-sm mt-4">
+                <div className="flex gap-2 items-center">
+                  <CreditCard className="w-3 h-3" />
+                  <p>Pagamento seguro</p>
+                </div>
+
+                <div className="flex gap-2 items-center">
+                  <ShieldCheck className="w-3 h-3" />
+                  <p>Cancelamento em até 5 min</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="card-base rounded-3xl border-muted/20 p-6">
+              <h3 className="text-2xl font-bold text-secondary mb-5">
+                Detalhes da entrega
               </h3>
-            </div>
 
-            <p className="text-sm text-foreground/60 mt-1">
-              Tudo certo para confirmar.
-            </p>
+              <div className="flex flex-col gap-4 text-sm">
+                <div className="flex gap-3">
+                  <Clock className="w-5 h-5 text-primary shrink-0" />
 
-            <div className="flex flex-col gap-4 mt-8 text-md">
-              <div className="flex items-center justify-between">
-                <span className="text-soft">Subtotal</span>
-                <span className="font-medium text-lg">R$ 73,43</span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-soft">Taxa de entrega</span>
-                <span className="font-medium text-lg">R$ 6,90</span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <span className="text-soft">Desconto</span>
-                <span className="font-medium text-primary text-lg">
-                  - R$ 2,49
-                </span>
-              </div>
-            </div>
-
-            <div className="border-t border-muted/20 my-6" />
-
-            <div className="flex items-center justify-between font-bold">
-              <span className="text-2xl  text-secondary">Total</span>
-              <strong className="text-2xl  text-primary">R$ 77,84</strong>
-            </div>
-
-            <NavLink
-              to="/order"
-              className="btn-primary w-full flex items-center justify-center gap-2 mt-4"
-            >
-              <CircleCheck className="w-5 h-5" />
-              Confirmar pedido
-            </NavLink>
-
-            <div className=" text-foreground/60 text-sm mt-4">
-              <div className="flex gap-2 items-center">
-                <CreditCard className="w-3 h-3" />
-                <p> Pagamento seguro</p>
-              </div>
-              <div className="flex gap-2 items-center">
-                <ShieldCheck className="w-3 h-3" />
-                <p> Cancelamento em até 5 min</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="card-base rounded-3xl border-muted/20 p-6">
-            <h3 className="text-2xl font-bold text-secondary mb-5">
-              Detalhes da entrega
-            </h3>
-
-            <div className="flex flex-col gap-4 text-sm">
-              <div className="flex gap-3">
-                <Clock className="w-5 h-5 text-primary shrink-0" />
-                <div>
-                  <p className="font-semibold">Tempo estimado</p>
-                  <p className="text-foreground/60">35–45 minutos</p>
+                  <div>
+                    <p className="font-semibold">Tempo estimado</p>
+                    <p className="text-foreground/60">35–45 minutos</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex gap-3">
-                <CreditCard className="w-5 h-5 text-primary shrink-0" />
-                <div>
-                  <p className="font-semibold">Pagamento seguro</p>
-                  <p className="text-foreground/60">
-                    Seus dados são protegidos.
-                  </p>
+                <div className="flex gap-3">
+                  <CreditCard className="w-5 h-5 text-primary shrink-0" />
+
+                  <div>
+                    <p className="font-semibold">Pagamento seguro</p>
+                    <p className="text-foreground/60">
+                      Seus dados são protegidos.
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex gap-3">
-                <ShieldCheck className="w-5 h-5 text-primary shrink-0" />
-                <div>
-                  <p className="font-semibold">Compra protegida</p>
-                  <p className="text-foreground/60">
-                    Cancelamento permitido em até 5 minutos.
-                  </p>
+                <div className="flex gap-3">
+                  <ShieldCheck className="w-5 h-5 text-primary shrink-0" />
+
+                  <div>
+                    <p className="font-semibold">Compra protegida</p>
+                    <p className="text-foreground/60">
+                      Cancelamento permitido em até 5 minutos.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
