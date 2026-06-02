@@ -29,7 +29,7 @@ const ForgetPassword = () => {
           <h2 className="text-3xl font-bold">Recuperar acesso</h2>
 
           <p className="mt-2 text-sm text-muted">
-            Informe seu e-mail para receber as instruções de recuperação.
+            Simulação de recuperação de acesso para fins demonstrativos.
           </p>
         </div>
 

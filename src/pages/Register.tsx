@@ -44,7 +44,7 @@ const Register = () => {
           <h1 className="text-3xl font-bold">Criar conta</h1>
 
           <p className="mt-2 text-sm text-muted">
-            Cadastre-se para pedir suas receitas favoritas.
+            Crie uma conta para testar os recursos da aplicação.
           </p>
         </div>
 

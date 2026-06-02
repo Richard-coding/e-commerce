@@ -1,27 +1,27 @@
 export const items = [
-  {
-    title: "Quais dados coletamos",
-    description:
-      "Coletamos nome, e-mail, telefone e endereço informados durante o cadastro e pedido, além de dados de navegação para melhorar a experiência.",
-  },
-  {
-    title: "Como utilizamos os dados",
-    description:
-      "Os dados são utilizados para simular pedidos, entregas, atualizações e suporte personalizado dentro do projeto.",
-  },
-  {
-    title: "Cookies e navegação",
-    description:
-      "Utilizamos cookies fictícios para representar preferências, sessões ativas e desempenho da aplicação.",
-  },
-  {
-    title: "Segurança das informações",
-    description:
-      "Adotamos boas práticas visuais de segurança, mas nenhuma informação real é processada neste sistema.",
-  },
-  {
-    title: "Contato",
-    description:
-      "Em caso de dúvidas sobre privacidade, entre em contato: privacidade@raizesdonordeste.com.br",
-  },
+{
+title: "Dados armazenados",
+description:
+"Este projeto armazena apenas informações fornecidas durante o cadastro, como nome, e-mail e senha, utilizando o armazenamento local do navegador (Local Storage). Nenhum dado é enviado para servidores externos.",
+},
+{
+title: "Finalidade das informações",
+description:
+"Os dados são utilizados exclusivamente para demonstrar funcionalidades de autenticação e navegação dentro da aplicação, sem qualquer finalidade comercial.",
+},
+{
+title: "Armazenamento local",
+description:
+"Todas as informações permanecem armazenadas apenas no navegador do usuário. Ao limpar os dados do navegador, as informações cadastradas serão removidas.",
+},
+{
+title: "Segurança e privacidade",
+description:
+"Este é um projeto acadêmico desenvolvido para fins educacionais e de portfólio. Nenhum dado real é processado, compartilhado ou utilizado por terceiros.",
+},
+{
+title: "Projeto acadêmico",
+description:
+"A aplicação simula um sistema de delivery para demonstração de habilidades em desenvolvimento web utilizando React, TypeScript e Tailwind CSS.",
+},
 ];

@@ -33,9 +33,10 @@ export const products = [
 
   {
     id: 4,
-    title: "teste",
-    description: "Teste recheada com queijo coalho.",
-    price: 29.3,
+    title: "Cartola Pernambucana",
+    description:
+      "Sobremesa tradicional com banana, queijo coalho, canela e açúcar.",
+    price: 16.9,
     image: Foods,
     category: "Pratos",
     available: false,

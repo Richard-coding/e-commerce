@@ -37,7 +37,7 @@ const Login = () => {
         <div className="mb-6 text-center">
           <h2 className="text-3xl font-bold ">Entrar</h2>
           <p className="mt-2 text-sm text-muted">
-            Acesse sua conta para pedir suas receitas favoritas.
+            Acesse sua conta para explorar os fluxos da aplicação.
           </p>
         </div>
 
