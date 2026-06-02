@@ -62,7 +62,7 @@ const CheckoutSection = () => {
                 </p>
               </div>
 
-              <button className="px-5 py-2 rounded-xl border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200">
+              <button className="btn-ghost">
                 Alterar
               </button>
             </div>

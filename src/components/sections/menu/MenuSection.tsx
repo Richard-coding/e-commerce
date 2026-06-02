@@ -15,7 +15,7 @@ const MenuSection = () => {
 
         <div className="absolute inset-0 p-8 flex flex-col justify-center max-w-xl text-white">
           <span className="bg-primary/90 text-sm font-semibold px-4 py-2 rounded-full w-fit mb-5">
-           Promoção até 25% OFF
+            Promoção até 25% OFF
           </span>
 
           <h1 className="text-3xl sm:text-5xl font-bold leading-tight">
@@ -58,7 +58,7 @@ const MenuSection = () => {
               className={`px-5 py-3 rounded-xl border text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
                 index === 0
                   ? "bg-primary text-white border-primary"
-                  : "bg-white hover:bg-primary/10 border-muted/20"
+                  : "btn-ghost"
               }`}
             >
               {category}

@@ -122,7 +122,7 @@ const Cart = () => {
                 className="flex-1 border border-muted/20 rounded-2xl px-4 py-3 outline-none focus:border-primary"
               />
 
-              <button className="px-6 py-3 rounded-2xl border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200">
+              <button className="btn-ghost">
                 Aplicar
               </button>
             </div>

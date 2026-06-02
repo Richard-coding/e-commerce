@@ -45,17 +45,11 @@ const HomeSection = () => {
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-semibold text-sm">
-            <NavLink
-              to="/cardapio"
-              className="py-3 px-4 rounded-xl shadow bg-primary text-white hover:bg-secondary transition-all duration-200 text-center"
-            >
+            <NavLink to="/cart" className="btn-primary flex justify-center ">
               Ver cardápio
             </NavLink>
 
-            <NavLink
-              to="/pedido"
-              className="py-3 px-4 rounded-xl border border-muted/30 hover:bg-secondary/10 transition-all duration-200 text-center"
-            >
+            <NavLink to="/order" className="btn-primary flex justify-center">
               Acompanhar pedido
             </NavLink>
           </div>
@@ -84,13 +78,13 @@ const HomeSection = () => {
           {categories.map((category, index) => (
             <button
               key={category}
-              className={`min-w-27.5 rounded-2xl border p-5 flex flex-col items-center justify-center gap-3 transition-all duration-200 shadow-sm ${
+              className={`min-w-32 shrink-0 rounded-2xl border p-5 flex flex-col items-center justify-center gap-3 transition-all duration-200 shadow-sm ${
                 index === 0
                   ? "bg-primary text-white border-primary"
                   : "bg-white hover:bg-primary/10 border-muted/20"
               }`}
             >
-              <div className="w-10 h-10 rounded-full bg-background flex items-center justify-center text-sm font-bold">
+              <div className="w-10  h-10 rounded-full bg-background flex  items-center justify-center text-sm font-bold">
                 <Food className="w-5 h-5" />
               </div>
 

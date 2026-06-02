@@ -55,15 +55,11 @@ const CartItem = ({
         <div className="flex items-end justify-between gap-4 flex-wrap">
           {/* Quantidade */}
           <div className="flex items-center gap-4 border border-muted/20 rounded-full px-4 py-2">
-            <button className="text-lg font-bold text-foreground/70 hover:text-primary cursor-pointer">
-              -
-            </button>
+            <button className="btn-ghost">-</button>
 
             <span className="font-semibold">{quantity}</span>
 
-            <button className="text-lg font-bold text-foreground/70 hover:text-primary cursor-pointer">
-              +
-            </button>
+            <button className="btn-ghost">+</button>
           </div>
 
           {/* Preço */}

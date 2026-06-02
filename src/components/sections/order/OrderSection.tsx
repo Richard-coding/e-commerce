@@ -136,11 +136,11 @@ const OrderSection = () => {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
-              <button className="py-3 rounded-2xl border border-muted/20 hover:bg-primary/10 transition-all duration-200">
+              <button className="btn-ghost">
                 Falar com restaurante
               </button>
 
-              <button className="py-3 rounded-2xl border border-muted/20 hover:bg-primary/10 transition-all duration-200">
+              <button className="btn-ghost">
                 Ligar para suporte
               </button>
             </div>
