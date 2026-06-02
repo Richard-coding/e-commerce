@@ -85,7 +85,7 @@ const HomeSection = () => {
                     : "bg-white hover:bg-primary/10 border-muted/20"
                 }`}
               >
-                <div className="w-10  h-10 rounded-full bg-background flex  items-center justify-center text-sm font-bold">
+                <div className="w-10  h-10 rounded-full bg-surface flex  items-center justify-center text-sm font-bold">
                   <Food className="w-5 h-5" />
                 </div>
 

@@ -66,7 +66,7 @@ const LegalPage = ({
 
         <NavLink
           to="/"
-          className="mx-auto text-primary font-semibold hover:text-secondary transition-all duration-200"
+          className="flex justify-center text-primary font-semibold hover:text-secondary transition-all duration-200"
         >
           ← Voltar para Home
         </NavLink>
