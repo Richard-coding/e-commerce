@@ -5,7 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Lgpd from "./components/sections/legal/Lgpd";
-import Layout from "./pages/Layout";
+import Layout from "@/components/layout/Layout.tsx"
 import MenuSection from "./components/sections/menu/MenuSection";
 import CartSection from "@/components/sections/cart/CartSection";
 import CheckoutSection from "./components/sections/cart/CheckoutSection";

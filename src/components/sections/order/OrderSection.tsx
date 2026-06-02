@@ -3,43 +3,45 @@ import { steps } from "@/data/steps.ts";
 
 const OrderSection = () => {
   return (
-    <section className="min-h-screen max-w-7xl mx-auto p-6">
-      <div className=" rounded-3xl min-h-72 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
-        <div className="p-6">
-          <span className="bg-white/10 border border-white/10 px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-2">
-            <Food className="w-3 h-3" />
-            Pedido confirmado
-          </span>
-
-          <h1 className="text-4xl sm:text-5xl font-bold mt-5">
-            Acompanhe seu <span className="text-primary">pedido</span>
-          </h1>
-
-          <p className="text-white/80 text-base sm:text-lg mt-4 max-w-xl leading-relaxed">
-            Tudo certo por aqui. Já estamos preparando os sabores do Nordeste
-            para você acompanhar cada etapa em tempo real.
-          </p>
-
-          <div className="flex flex-wrap gap-6 mt-6 text-sm text-white/70">
-            <span className="flex items-center gap-2">
-              <Food className="w-4 h-4" />
-              Pedido #1024
+    <section className="section-base min-h-screen">
+      <div className="container-base">
+        <div className=" rounded-3xl min-h-72 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
+          <div className="p-6">
+            <span className="bg-white/10 border border-white/10 px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-2">
+              <Food className="w-3 h-3" />
+              Pedido confirmado
             </span>
 
-            <span className="flex items-center gap-2">
-              <Food className="w-4 h-4" />
-              35/45 min
-            </span>
+            <h1 className="text-4xl sm:text-5xl font-bold mt-5">
+              Acompanhe seu <span className="text-primary">pedido</span>
+            </h1>
 
-            <span className="flex items-center gap-2">
-              <Food className="w-4 h-4" />
-              Recife — Boa Viagem
-            </span>
+            <p className="text-white/80 text-base sm:text-lg mt-4 max-w-xl leading-relaxed">
+              Tudo certo por aqui. Já estamos preparando os sabores do Nordeste
+              para você acompanhar cada etapa em tempo real.
+            </p>
+
+            <div className="flex flex-wrap gap-6 mt-6 text-sm text-white/70">
+              <span className="flex items-center gap-2">
+                <Food className="w-4 h-4" />
+                Pedido #1024
+              </span>
+
+              <span className="flex items-center gap-2">
+                <Food className="w-4 h-4" />
+                35/45 min
+              </span>
+
+              <span className="flex items-center gap-2">
+                <Food className="w-4 h-4" />
+                Recife — Boa Viagem
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto pt-10">
+      <div className="container-base pt-10">
         {/* TIMELINE */}
         <div className="card-base rounded-3xl border-muted/20 p-6">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">

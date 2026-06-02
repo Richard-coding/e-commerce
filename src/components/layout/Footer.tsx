@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-secondary text-white">
-      <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="container-base py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Cardápio</h3>
 
@@ -95,10 +95,10 @@ const Footer = () => {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 grid grid-cols-1 sm:grid-cols-2 sm:text-center items-center justify-between gap-2 text-sm text-white/60">
+        <div className="container-base py-4 grid grid-cols-1 sm:grid-cols-2 sm:text-center items-center justify-between gap-2 text-sm text-white/60">
           <p>© 2026 Raízes do Nordeste. Todos os direitos reservados.</p>
 
-          <p >
+          <p>
             Projeto fictício desenvolvido para fins educacionais e acadêmicos.
           </p>
         </div>

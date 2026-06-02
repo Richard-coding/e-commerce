@@ -3,44 +3,46 @@ import { NavLink } from "react-router-dom";
 
 const CheckoutSection = () => {
   return (
-    <section className="max-w-7xl mx-auto p-6 gap-10 bg-[#faf6ee]">
-      <div className="max-w-7xl mx-auto rounded-3xl min-h-72 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
-        <div className="max-w-7xl mx-auto p-6">
-          <span className="bg-white/10 border border-white/10 px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-2">
-            <Food className="w-3 h-3" />
-            Etapa final
-          </span>
-
-          <h1 className="text-4xl sm:text-5xl font-bold mt-5">
-            Finalizar pedido
-          </h1>
-
-          <p className="text-white/80 text-base sm:text-lg mt-4 max-w-xl leading-relaxed">
-            Confirme seus dados antes de finalizar. Tudo pronto para levar o
-            sabor do Nordeste até você.
-          </p>
-
-          <div className="flex flex-wrap gap-6 mt-6 text-sm text-white/70">
-            <span className="flex items-center gap-2">
-              <Food className="w-4 h-4" />
-              Recife — Boa Viagem
+    <section className="section-base">
+      <div className="container-base">
+        <div className="rounded-3xl min-h-72 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
+          <div className="p-6">
+            <span className="bg-white/10 border border-white/10 px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-2">
+              <Food className="w-3 h-3" />
+              Etapa final
             </span>
 
-            <span className="flex items-center gap-2">
-              <Food className="w-4 h-4" />
-              35–45 min
-            </span>
+            <h1 className="text-4xl sm:text-5xl font-bold mt-5">
+              Finalizar pedido
+            </h1>
 
-            <span className="flex items-center gap-2">
-              <Food className="w-4 h-4" />
-              Frete grátis acima de R$ 60
-            </span>
+            <p className="text-white/80 text-base sm:text-lg mt-4 max-w-xl leading-relaxed">
+              Confirme seus dados antes de finalizar. Tudo pronto para levar o
+              sabor do Nordeste até você.
+            </p>
+
+            <div className="flex flex-wrap gap-6 mt-6 text-sm text-white/70">
+              <span className="flex items-center gap-2">
+                <Food className="w-4 h-4" />
+                Recife — Boa Viagem
+              </span>
+
+              <span className="flex items-center gap-2">
+                <Food className="w-4 h-4" />
+                35–45 min
+              </span>
+
+              <span className="flex items-center gap-2">
+                <Food className="w-4 h-4" />
+                Frete grátis acima de R$ 60
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto py-10 grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8">
-        <div className="flex flex-col gap-6">
+      <div className="container-base">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-8\">
           <div className="card-base rounded-3xl border-muted/20 p-6">
             <div className="flex items-center gap-2 mb-4">
               <Food className="w-5 h-5 text-primary" />
@@ -62,7 +64,9 @@ const CheckoutSection = () => {
                 </p>
               </div>
 
-              <button type="button" className="btn-ghost">Alterar</button>
+              <button type="button" className="btn-ghost">
+                Alterar
+              </button>
             </div>
           </div>
 

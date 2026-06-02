@@ -21,7 +21,7 @@ const ForgetPassword = () => {
   };
 
   return (
-    <main className="flex min-h-dvh items-center justify-center px-4 py-8">
+    <main className="flex min-h-dvh items-center justify-center px-4 py-8 app-background">
       <section className="card-base w-full max-w-96 p-6 border-muted/20 shadow">
         <Brand />
 

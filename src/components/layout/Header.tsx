@@ -49,8 +49,8 @@ const Header = () => {
   }, []);
 
   return (
-    <nav className="w-full shadow-sm top-0 z-50 bg-background">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <nav className="w-full shadow-sm top-0 z-50 header-base">
+      <div className="container-base flex items-center justify-between py-4">
         <NavLink to="/" className="flex items-center gap-3">
           <div className="w-11 h-11 rounded-full flex items-center justify-center bg-primary shadow-md transition-colors duration-200 hover:bg-secondary">
             <Shrimp className="w-5 h-5 text-white" />

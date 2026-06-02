@@ -3,7 +3,7 @@ import Food from "@/assets/icons/food.svg?react";
 
 const NotFound = () => {
   return (
-    <main className="flex items-center justify-center px-6 py-10">
+    <main className="flex items-center justify-center px-6 py-10 app-background">
       <section className="w-full max-w-2xl rounded-3xl  p-8 text-center">
         <span className="mx-auto w-fit  border border-primary/20 px-4 py-2 rounded-full text-xs font-bold text-primary uppercase inline-flex items-center gap-2">
           <Food className="w-3 h-3" />

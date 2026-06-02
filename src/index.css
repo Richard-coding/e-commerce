@@ -25,6 +25,29 @@
 }
 
 @layer components {
+  .section-base {
+    @apply py-10 md:py-14 lg:py-10;
+  }
+
+  .section-soft {
+    @apply bg-primary/5 py-10 md:py-14 lg:py-16;
+  }
+
+  .section-surface {
+    @apply bg-surface py-10 md:py-14 lg:py-16;
+  }
+
+  .container-base {
+    @apply mx-auto w-full max-w-7xl px-4 md:px-6 lg:px-8;
+  }
+
+  .app-background {
+    @apply bg-background text-foreground;
+  }
+
+  .header-base {
+    @apply sticky top-0 z-50 border-b border-muted/20 bg-surface/95 backdrop-blur;
+  }
   .card-base {
     @apply bg-surface rounded-2xl border border-muted/30 shadow-sm;
   }
