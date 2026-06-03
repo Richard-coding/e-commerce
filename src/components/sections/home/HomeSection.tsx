@@ -39,13 +39,15 @@ const HomeSection = () => {
             </div>
 
             <p className="text-foreground/80 text-md md:text-lg">
-              Acarajé, baião, tapioca, bolo de rolo e muito mais — receitas
-              tradicionais preparadas na hora. Acarajé, baião, tapioca, bolo de
-              rolo e muito mais — receitas tradicionais preparadas na hora.
+              Dos tradicionais acarajés preparados na hora às irresistíveis
+              tapiocas recheadas, nosso cardápio reúne alguns dos sabores mais
+              marcantes da culinária nordestina. Descubra receitas que
+              atravessam gerações, feitas com ingredientes selecionados e muito
+              respeito às tradições do Nordeste brasileiro.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-semibold text-sm">
-              <NavLink to="/cart" className="btn-primary flex justify-center">
+              <NavLink to="/menu" className="btn-primary flex justify-center">
                 Ver cardápio
               </NavLink>
 

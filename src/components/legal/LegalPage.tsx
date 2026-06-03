@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import type { LucideIcon } from "lucide-react";
+import { ReceiptText, type LucideIcon } from "lucide-react";
 
 interface LegalItem {
   icon: LucideIcon;
@@ -11,10 +11,14 @@ interface LegalPageProps {
   title: string;
   description: string;
   items: LegalItem[];
+  badge: string;
+  notice: string;
 }
 
 export default function LegalPage({
   title,
+  badge,
+  notice,
   description,
   items,
 }: LegalPageProps) {
@@ -22,11 +26,16 @@ export default function LegalPage({
     <section className="section-base min-h-screen">
       <div className="container-base flex flex-col gap-8">
         <div className="rounded-3xl min-h-72 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] p-8 text-white">
+          <span className="bg-white/10 border border-white/10 px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-2">
+            <ReceiptText className="w-3 h-3" />
+            {badge}
+          </span>
           <h1 className="text-3xl font-bold mb-3">{title}</h1>
 
-          <p className="text-white/80 max-w-2xl leading-relaxed">
-            {description}
-          </p>
+          <div className="text-white/80 max-w-2xl leading-relaxed">
+            <p>{description}</p>
+            <p>{notice}</p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

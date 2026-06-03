@@ -1,21 +1,60 @@
-Login
-Cadastro
-Home
-Cardápio
-Carrinho
-Checkout / Finalizar pedido
-Header/Footer
-Layout com rotas
-Responsividade base
-Dados mockados
+# Raízes do Nordeste
 
-- [ ] Página Pedido / Acompanhamento
-- [ ] Página LGPD
-- [ ] Página Termos de uso
-- [ ] Página 404 simples
-- [ ] Logout funcional
-- [ ] Todos os links do header/footer funcionando
-- [ ] Validações simples no Login/Register
-- [ ] Feedback visual com toast
-- [ ] README final
-- [ ] Deploy
+A Front-End application built with React, TypeScript, and Tailwind CSS that simulates a food delivery platform focused on traditional Brazilian Northeastern cuisine.
+
+This project was developed for academic and portfolio purposes, using mock data and Local Storage to simulate authentication, orders, and user preferences.
+
+## Technologies
+
+* React
+* TypeScript
+* React Router
+* Tailwind CSS
+* Vite
+* Local Storage
+
+## Getting Started
+
+### Clone the repository
+
+```bash
+git clone https://github.com/Richard-coding/e-commerce
+```
+
+### Navigate to the project folder
+
+```bash
+cd raizes-do-nordeste
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Run the development server
+
+```bash
+npm run dev
+```
+
+The application will be available at:
+
+```txt
+http://localhost:5173
+```
+
+## Production Build
+
+```bash
+npm run build
+```
+
+## Notes
+
+* Academic and portfolio project.
+* No real backend integration.
+* No real payment processing.
+* User data is stored locally in the browser using Local Storage.
+* Product information and interactions are simulated using mock data.
