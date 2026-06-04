@@ -1,7 +1,32 @@
 import { products } from "@/data/Products";
 import { categories } from "@/data/categories";
+import { ChevronDown } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 const MenuSection = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedUnit, setSelectedUnit] = useState("Recife");
+
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const units = ["Recife", "Olinda", "Jaboatão"];
   return (
     <section className="section-base">
       <div className="container-base flex flex-col gap-10">
@@ -65,6 +90,46 @@ const MenuSection = () => {
                 {category.label}
               </button>
             ))}
+          </div>
+
+          <div ref={dropdownRef} className="relative w-full max-w-50 ">
+            <label className="block mb-2 text-sm font-medium text-secondary">
+              Unidade
+            </label>
+
+            <button
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
+              className="input-base w-full flex items-center justify-between"
+            >
+              <span>{selectedUnit}</span>
+
+              <ChevronDown
+                className={`w-4 h-4 transition-transform ${
+                  isOpen ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {isOpen && (
+              <div className="absolute top-full left-0 mt-2 w-full card-base border border-muted/20 rounded-2xl overflow-hidden z-20">
+                {units.map((unit) => (
+                  <button
+                    key={unit}
+                    type="button"
+                    onClick={() => {
+                      setSelectedUnit(unit);
+                      setIsOpen(false);
+                    }}
+                    className={`w-full px-4 py-3 text-left hover:bg-primary/5 transition-colors ${
+                      selectedUnit === unit ? "text-primary font-semibold" : ""
+                    }`}
+                  >
+                    {unit}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
