@@ -7,7 +7,6 @@ import {
   ShieldCheck,
   TicketPercent,
 } from "lucide-react";
-
 import CartPayment from "./CartPayment";
 
 const CheckoutSection = () => {
@@ -21,9 +20,7 @@ const CheckoutSection = () => {
               Etapa final
             </span>
 
-            <h1 className="text-4xl sm:text-5xl font-bold mt-5">
-              Finalizar pedido
-            </h1>
+            <h1 className="text-4xl sm:text-5xl font-bold mt-5">Finalize seu pedido</h1>
 
             <p className="text-white/80 text-base sm:text-lg mt-4 max-w-xl leading-relaxed">
               Confirme seus dados antes de finalizar. Tudo pronto para levar o
@@ -142,7 +139,7 @@ const CheckoutSection = () => {
           </div>
 
           <aside className="grid gap-6">
-            <CartPayment />
+            <CartPayment label="Confirmar pagamento" variant="checkout" />
 
             <div className="card-base rounded-3xl border-muted/20 p-6">
               <h3 className="text-2xl font-bold text-secondary mb-5">

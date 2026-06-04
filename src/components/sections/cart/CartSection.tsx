@@ -7,6 +7,7 @@ import {
   TicketPercent,
 } from "lucide-react";
 import { cartItems } from "@/data/cart";
+
 import CartPayment from "./CartPayment";
 
 const Cart = () => {
@@ -143,7 +144,7 @@ const Cart = () => {
           </div>
 
           <div className="flex flex-col gap-6 ">
-            <CartPayment />
+            <CartPayment label="Finalizar pedido" link="/checkout" variant="cart" />
 
             <div className="card-base rounded-3xl border-muted/20 p-6">
               <h3 className="text-2xl font-bold text-secondary mb-6">
