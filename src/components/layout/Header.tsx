@@ -9,6 +9,7 @@ import {
   ShieldCheck,
   UtensilsCrossed,
   ReceiptText,
+  LogIn,
 } from "lucide-react";
 
 import Shrimp from "@/assets/icons/shrimp.svg?react";
@@ -135,17 +136,30 @@ const Header = () => {
                 <div className="absolute w-40 bg-white top-12 right-0 shadow-md rounded-xl border border-muted/10 p-1">
                   <ul className="flex flex-col gap-2">
                     <li>
-                      <button
-                        type="button"
-                        className="hover:bg-primary/10 p-2 w-full rounded-xl flex gap-4 items-center cursor-pointer text-sm transition-colors duration-200"
-                        onClick={() => {
-                          logoutUser();
-                          navigate("/login");
-                        }}
-                      >
-                        <LogOut className="w-5 h-5" />
-                        Sair
-                      </button>
+                      {currentUser ? (
+                        <button
+                          type="button"
+                          className="hover:bg-primary/10 p-2 w-full rounded-xl flex gap-4 items-center cursor-pointer text-sm transition-colors duration-200"
+                          onClick={() => {
+                            logoutUser();
+                            navigate("/login");
+                          }}
+                        >
+                          <LogOut className="w-5 h-5" />
+                          Sair
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          className="hover:bg-primary/10 p-2 w-full rounded-xl flex gap-4 items-center cursor-pointer text-sm transition-colors duration-200"
+                          onClick={() => {
+                            navigate("/login");
+                          }}
+                        >
+                          <LogIn className="w-5 h-5" />
+                          Fazer login
+                        </button>
+                      )}
                     </li>
                   </ul>
                 </div>
@@ -206,15 +220,29 @@ const Header = () => {
                   </NavLink>
                 </li>
 
-                <li>
-                  <button
-                    type="button"
-                    className="hover:bg-primary/10 py-2 px-4 w-full rounded-xl flex gap-4 items-center cursor-pointer transition-colors duration-200"
-                  >
-                    <LogOut className="w-5 h-5" />
-                    Sair
-                  </button>
-                </li>
+                {currentUser ? (
+                  <li>
+                    <button
+                      type="button"
+                      className="hover:bg-primary/10 py-2 px-4 w-full rounded-xl flex gap-4 items-center cursor-pointer transition-colors duration-200"
+                      onClick={logoutUser}
+                    >
+                      <LogOut className="w-5 h-5" />
+                      Sair
+                    </button>
+                  </li>
+                ) : (
+                  <li>
+                    <button
+                      type="button"
+                      className="hover:bg-primary/10 py-2 px-4 w-full rounded-xl flex gap-4 items-center cursor-pointer transition-colors duration-200"
+                      onClick={() => navigate("/login")}
+                    >
+                      <LogIn className="w-5 h-5" />
+                      Fazer login
+                    </button>
+                  </li>
+                )}
               </ul>
             </div>
           )}

@@ -23,8 +23,6 @@ export function UserProvider({ children }: UserProviderProps) {
     getCurrentUser()
   );
 
-  const isLoggedIn = currentUser !== null;
-
   const registerUser = (user: Register): void => {
     const updatedUsers = [...users, user];
 
@@ -58,7 +56,6 @@ export function UserProvider({ children }: UserProviderProps) {
       value={{
         users,
         currentUser,
-        isLoggedIn,
         registerUser,
         loginUser,
         logoutUser,
