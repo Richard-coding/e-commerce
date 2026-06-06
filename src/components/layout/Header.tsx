@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   Menu,
   X,
@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import Shrimp from "@/assets/icons/shrimp.svg?react";
+import { useUser } from "@/hooks/useUser";
 
 const links = [
   { label: "Cardápio", to: "/menu", icon: UtensilsCrossed },
@@ -25,6 +26,9 @@ const Header = () => {
 
   const menuRef = useRef<HTMLDivElement | null>(null);
   const mobileRef = useRef<HTMLDivElement | null>(null);
+
+  const { currentUser, logoutUser } = useUser();
+  const navigate = useNavigate();
 
   const closeMenus = () => {
     setMenu(false);
@@ -107,9 +111,9 @@ const Header = () => {
 
             <div
               ref={menuRef}
-              className="flex items-center text-sm gap-2 text-black relative"
+              className="flex items-center text-sm gap-1 text-black relative"
             >
-              <p>Richard</p>
+              <p>{currentUser?.name ?? "Login"}</p>
 
               <button
                 type="button"
@@ -127,6 +131,10 @@ const Header = () => {
                       <button
                         type="button"
                         className="hover:bg-primary/10 p-2 w-full rounded-xl flex gap-4 items-center cursor-pointer text-sm transition-colors duration-200"
+                        onClick={() => {
+                          logoutUser();
+                          navigate("/login");
+                        }}
                       >
                         <LogOut className="w-5 h-5" />
                         Sair

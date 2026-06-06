@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import Input from "@/components/inputs/Input";
 import { useState, type SubmitEventHandler } from "react";
-import useLocalStorage from "@/hooks/useLocalStorage";
 import toast from "react-hot-toast";
+import { useUser } from "@/hooks/useUser";
 import Brand from "@/components/ui/Brand";
 
 const Register = () => {
@@ -11,7 +11,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [isChecked, setIsChecked] = useState(false);
 
-  const { createUser } = useLocalStorage();
+  const { registerUser } = useUser();
   const navigate = useNavigate();
 
   const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
@@ -19,7 +19,7 @@ const Register = () => {
 
     if (name.trim() && email.trim() && password.trim()) {
       const form = { name, email, password };
-      createUser(form);
+      registerUser(form);
       toast.success("Cadastro efetuado com sucesso", { id: "register" });
 
       if (isChecked) {

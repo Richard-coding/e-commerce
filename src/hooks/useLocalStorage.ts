@@ -1,33 +1,39 @@
-interface Register {
-  name: string;
-  email: string;
-  password: string;
-}
+import type { Register } from "../types/user";
 
-const useLocalStorage = () => {
-  const getUser = (): Register | null => {
-    const user = localStorage.getItem("user");
+export function useLocalStorage() {
+  const getUsers = (): Register[] => {
+    const users = localStorage.getItem("users");
+
+    if (!users) return [];
+
+    return JSON.parse(users);
+  };
+
+  const saveUsers = (users: Register[]): void => {
+    localStorage.setItem("users", JSON.stringify(users));
+  };
+
+  const getCurrentUser = (): Register | null => {
+    const user = localStorage.getItem("currentUser");
 
     if (!user) return null;
-
-    console.log(user);
 
     return JSON.parse(user);
   };
 
-  const createUser = (user: Register): void => {
-    localStorage.setItem("user", JSON.stringify(user));
+  const saveCurrentUser = (user: Register): void => {
+    localStorage.setItem("currentUser", JSON.stringify(user));
   };
 
-  const deleteUser = (user: string): void => {
-    localStorage.removeItem(user);
+  const removeCurrentUser = (): void => {
+    localStorage.removeItem("currentUser");
   };
 
   return {
-    getUser,
-    createUser,
-    deleteUser,
+    getUsers,
+    saveUsers,
+    getCurrentUser,
+    saveCurrentUser,
+    removeCurrentUser,
   };
-};
-
-export default useLocalStorage;
+}
