@@ -7,9 +7,12 @@ import {
   ShieldCheck,
   TicketPercent,
 } from "lucide-react";
+import { useShop } from "@/hooks/useShop";
 import CartPayment from "./CartPayment";
 
 const CheckoutSection = () => {
+  const { selectedUnit } = useShop();
+
   return (
     <section className="section-base">
       <div className="container-base">
@@ -30,7 +33,7 @@ const CheckoutSection = () => {
             <div className="flex flex-wrap gap-6 mt-6 text-sm text-white/70">
               <span className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                Recife — Boa Viagem
+                {selectedUnit} — Boa Viagem
               </span>
 
               <span className="flex items-center gap-2">

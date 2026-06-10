@@ -1,11 +1,13 @@
 import { products } from "@/data/Products";
 import { categories } from "@/data/categories";
+import { useShop } from "@/hooks/useShop";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 const MenuSection = () => {
+  const { cartItems, setCartItems, selectedUnit, setSelectedUnit } = useShop();
+
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedUnit, setSelectedUnit] = useState("Recife");
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -27,6 +29,38 @@ const MenuSection = () => {
   }, []);
 
   const units = ["Recife", "Olinda", "Jaboatão"];
+
+  const addToCart = (product: (typeof products)[number]) => {
+    if (!product.available) return;
+
+    const existingItem = cartItems.find((item) => item.id === product.id);
+
+    if (existingItem) {
+      setCartItems(
+        cartItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item,
+        ),
+      );
+    } else {
+      setCartItems([
+        ...cartItems,
+        {
+          id: product.id,
+          name: product.title,
+          description: product.description,
+          price: product.price,
+          oldPrice: product.oldPrice,
+          discountPercent: product.discountPercent,
+          quantity: 1,
+          image: product.image,
+          unavailable: !product.available,
+        },
+      ]);
+    }
+  };
+
   return (
     <section className="section-base">
       <div className="container-base flex flex-col gap-10">
@@ -155,7 +189,7 @@ const MenuSection = () => {
                 )}
 
                 <span className="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-                  -15%
+                  -{item.discountPercent ?? 0}%
                 </span>
               </div>
 
@@ -176,7 +210,9 @@ const MenuSection = () => {
                   </p>
 
                   <button
+                    type="button"
                     disabled={!item.available}
+                    onClick={() => addToCart(item)}
                     className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
                       item.available
                         ? "bg-primary text-white hover:bg-secondary"

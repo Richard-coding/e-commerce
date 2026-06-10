@@ -6,9 +6,34 @@ import {
   Phone,
   ReceiptText,
 } from "lucide-react";
+import { NavLink } from "react-router-dom";
 import { steps } from "@/data/steps";
+import { useShop } from "@/hooks/useShop";
 
 const OrderSection = () => {
+  const { orderStatus, selectedUnit } = useShop();
+
+  if (orderStatus === "pending") {
+    return (
+      <section className="section-base min-h-screen">
+        <div className="container-base pt-10">
+          <div className="card-base rounded-3xl border-muted/20 p-8 text-center">
+            <h2 className="text-2xl font-bold text-secondary">
+              Nenhum pedido em andamento
+            </h2>
+            <p className="text-soft mt-2">
+              Adicione itens ao carrinho e finalize o pagamento para acompanhar
+              seu pedido.
+            </p>
+            <NavLink to="/menu" className="btn-primary inline-flex mt-4">
+              Ver cardápio
+            </NavLink>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="section-base min-h-screen">
       <div className="container-base">
@@ -41,7 +66,7 @@ const OrderSection = () => {
 
               <span className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                Recife — Boa Viagem
+                {selectedUnit} — Boa Viagem
               </span>
             </div>
           </div>
@@ -177,7 +202,7 @@ const OrderSection = () => {
                 <div>
                   <p className="font-semibold">Av. Boa Viagem, 1234</p>
 
-                  <p className="text-foreground/60">Recife — PE</p>
+                  <p className="text-foreground/60">{selectedUnit} — PE</p>
                 </div>
               </div>
 

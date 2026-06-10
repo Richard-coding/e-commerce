@@ -8,7 +8,8 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useState } from "react";
-import {NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useShop } from "@/hooks/useShop";
 
 type Variant = "cart" | "checkout";
 
@@ -17,23 +18,39 @@ interface CartPaymentProps {
   link?: string;
   variant: Variant;
 }
-type Payment = "idle" | "processing" | "approved";
+
+const formatPrice = (value: number) =>
+  value.toFixed(2).replace(".", ",");
 
 const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
-  const [paymentStatus, setPaymentStatus] = useState<Payment>("idle");
+  const {
+    subtotal,
+    deliveryFee,
+    discount,
+    total,
+    pointsEarned,
+    paymentStatus,
+    confirmPayment,
+    cartItems,
+  } = useShop();
+
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const isCart = variant === "cart";
   const isCheckout = variant === "checkout";
-  const isLoading = paymentStatus === "processing";
-  const isApproved = paymentStatus === "approved";
+  const isApproved = paymentStatus === "paid";
 
   const navigate = useNavigate();
 
   const handlePayment = () => {
-    setPaymentStatus("processing");
+    if (cartItems.length === 0) return;
+
+    setIsProcessing(true);
 
     setTimeout(() => {
-      setPaymentStatus("approved");
+      confirmPayment();
+      setIsProcessing(false);
+
       setTimeout(() => {
         navigate("/order");
       }, 3000);
@@ -55,18 +72,24 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
       <div className="flex flex-col gap-4 mt-8 text-md">
         <div className="flex items-center justify-between">
           <span className="text-soft">Subtotal</span>
-          <span className="font-medium text-lg">R$ 73,43</span>
+          <span className="font-medium text-lg">R$ {formatPrice(subtotal)}</span>
         </div>
 
         <div className="flex items-center justify-between">
           <span className="text-soft">Taxa de entrega</span>
-          <span className="font-medium text-lg">R$ 6,90</span>
+          <span className="font-medium text-lg">
+            R$ {formatPrice(deliveryFee)}
+          </span>
         </div>
 
-        <div className="flex items-center justify-between">
-          <span className="text-soft">Desconto</span>
-          <span className="font-medium text-primary text-lg">- R$ 2,49</span>
-        </div>
+        {discount > 0 && (
+          <div className="flex items-center justify-between">
+            <span className="text-soft">Desconto</span>
+            <span className="font-medium text-primary text-lg">
+              - R$ {formatPrice(discount)}
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="border-t border-muted/20 my-6" />
@@ -74,29 +97,38 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
       <div className="flex items-center justify-between text-2xl font-bold">
         <span className="text-secondary">Total</span>
 
-        <strong className="text-primary">R$ 80,33</strong>
+        <strong className="text-primary">R$ {formatPrice(total)}</strong>
       </div>
 
-      <div className="grid grid-cols-[auto_1fr] gap-2 items-center text-sm text-soft border border-muted/30 rounded-2xl my-4 p-4">
-        <Medal className="w-5 h-5" />
+      {pointsEarned > 0 && (
+        <div className="grid grid-cols-[auto_1fr] gap-2 items-center text-sm text-soft border border-muted/30 rounded-2xl my-4 p-4">
+          <Medal className="w-5 h-5" />
 
-        <p>
-          Você ganhará{" "}
-          <span className="text-primary font-semibold">80 pontos</span> neste
-          pedido.
-        </p>
-      </div>
+          <p>
+            Você ganhará{" "}
+            <span className="text-primary font-semibold">
+              {pointsEarned} pontos
+            </span>{" "}
+            neste pedido.
+          </p>
+        </div>
+      )}
 
       {isCart && (
         <NavLink
-          to={link ?? "/checkout"}
-          className="btn-primary w-full flex items-center justify-center mt-4"
+          to={cartItems.length > 0 ? (link ?? "/checkout") : "#"}
+          onClick={(event) => {
+            if (cartItems.length === 0) event.preventDefault();
+          }}
+          className={`btn-primary w-full flex items-center justify-center mt-4 ${
+            cartItems.length === 0 ? "opacity-50 pointer-events-none" : ""
+          }`}
         >
           {label}
         </NavLink>
       )}
 
-      {isLoading ? (
+      {isProcessing ? (
         <div className="flex flex-col items-center  border border-muted/30 rounded-2xl text-center p-4 gap-2">
           <LoaderCircle className="w-5 h-5 animate-spin" />
           <p className="text-soft text-sm">
@@ -104,7 +136,7 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
             Simulação acadêmica — nenhuma transação real será efetuada.
           </p>
         </div>
-      ) : isApproved ? (
+      ) : isApproved && isCheckout ? (
         <div className="flex flex-col items-center  border border-muted/30 rounded-2xl text-center p-4 gap-2">
           <CircleCheck className="w-5 h-5 text-green-500" />
           <p className="text-soft">
@@ -116,22 +148,19 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
       {isCheckout && (
         <button
           type="button"
-          className={`${isApproved ? "bg-green-500" : null} btn-primary w-full flex items-center gap-2 justify-center mt-4`}
+          disabled={cartItems.length === 0 || isProcessing || isApproved}
+          className={`${isApproved ? "bg-green-500" : null} btn-primary w-full flex items-center gap-2 justify-center mt-4 disabled:opacity-50`}
           onClick={handlePayment}
         >
-          {isLoading ? (
+          {isProcessing ? (
             <div className="flex items-center gap-2">
-              <>
-                <LoaderCircle className="w-4 h-4 animate-spin" />
-                Processando...
-              </>
+              <LoaderCircle className="w-4 h-4 animate-spin" />
+              Processando...
             </div>
           ) : isApproved ? (
             <div className="flex items-center gap-2">
-              <>
-                <Check className="w-4 h-4 " />
-                Pagamento Aprovado
-              </>
+              <Check className="w-4 h-4 " />
+              Pagamento Aprovado
             </div>
           ) : (
             label

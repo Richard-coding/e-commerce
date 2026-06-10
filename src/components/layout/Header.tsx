@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import Shrimp from "@/assets/icons/shrimp.svg?react";
+import { useShop } from "@/hooks/useShop";
 import { useUser } from "@/hooks/useUser";
 
 const links = [
@@ -28,7 +29,13 @@ const Header = () => {
   const mobileRef = useRef<HTMLDivElement | null>(null);
 
   const { currentUser, logoutUser } = useUser();
+  const { cartItems } = useShop();
   const navigate = useNavigate();
+
+  const cartCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0,
+  );
 
   const closeMenus = () => {
     setMenu(false);
@@ -105,7 +112,7 @@ const Header = () => {
             >
               <ShoppingCartIcon className="w-5 h-5" />
               <span className="absolute -top-1 -right-1 min-w-5 h-5 px-1 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">
-                0
+                {cartCount}
               </span>
             </NavLink>
 
@@ -192,7 +199,7 @@ const Header = () => {
                     onClick={closeMenus}
                   >
                     <span className="absolute -top-2 left-8 min-w-5 h-5 px-1 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">
-                      1
+                      {cartCount}
                     </span>
                     <ShoppingCartIcon className="w-5 h-5" />
                     Carrinho
