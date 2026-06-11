@@ -27,7 +27,7 @@ const Login = () => {
       <section className="card-base w-full max-w-96 p-6 border-muted/20 shadow">
         <Brand />
         <div className="mb-6 text-center">
-          <h2 className="text-3xl font-bold ">Entrar</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">Entrar</h2>
           <p className="mt-2 text-sm text-muted">
             Acesse sua conta para explorar os fluxos da aplicação.
           </p>

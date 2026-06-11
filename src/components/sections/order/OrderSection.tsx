@@ -44,7 +44,7 @@ const OrderSection = () => {
               Pedido confirmado
             </span>
 
-            <h1 className="text-4xl sm:text-5xl font-bold mt-5">
+            <h1 className="text-3xl md:text-4xl font-bold mt-5">
               Acompanhe seu <span className="text-primary">pedido</span>
             </h1>
 

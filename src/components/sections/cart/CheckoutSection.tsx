@@ -23,7 +23,7 @@ const CheckoutSection = () => {
               Etapa final
             </span>
 
-            <h1 className="text-4xl sm:text-5xl font-bold mt-5">Finalize seu pedido</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mt-5">Finalize seu pedido</h1>
 
             <p className="text-white/80 text-base sm:text-lg mt-4 max-w-xl leading-relaxed">
               Confirme seus dados antes de finalizar. Tudo pronto para levar o

@@ -41,7 +41,7 @@ const Register = () => {
       <section className="card-base w-full max-w-96 p-6 border-muted/20 shadow">
         <Brand />
         <div className="mb-6 text-center">
-          <h1 className="text-3xl font-bold">Criar conta</h1>
+          <h1 className="text-3xl md:text-4xl font-bold">Criar conta</h1>
 
           <p className="mt-2 text-sm text-muted">
             Crie uma conta para testar os recursos da aplicação.

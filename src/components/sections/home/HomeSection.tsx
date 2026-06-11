@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { products } from "@/data/Products";
 import SectionTitle from "@/components/sections/home/HomeSectionTitle";
 import ProductCard from "@/components/ui/ProductCard";
-import { categories } from "@/data/categories";
+import { categories } from "@/data/Categories";
 
 const HomeSection = () => {
   return (

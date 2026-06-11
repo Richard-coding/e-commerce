@@ -26,7 +26,7 @@ const ForgetPassword = () => {
         <Brand />
 
         <div className="mb-6 text-center">
-          <h2 className="text-3xl font-bold">Recuperar acesso</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">Recuperar acesso</h2>
 
           <p className="mt-2 text-sm text-muted">
             Simulação de recuperação de acesso para fins demonstrativos.

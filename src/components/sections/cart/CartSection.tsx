@@ -28,10 +28,10 @@ const Cart = () => {
         <div className="rounded-3xl min-h-72 bg-linear-to-r from-[#4d2b1f] to-[#6a4030] text-white">
           <div className="p-6">
             <span className="bg-white/10 border border-white/10 px-3 py-1 rounded-full text-xs font-semibold inline-flex items-center gap-2">
-              <Receipt className="w-4 h-4" /> <p>Carinho</p>
+              <Receipt className="w-3 h-3" /> <p>Carinho</p>
             </span>
 
-            <h1 className="text-5xl font-bold mt-5">Seu Carrinho</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mt-5">Seu Carrinho</h1>
             <p className="text-white/80 text-lg mt-4 max-w-xl leading-relaxed">
               Confira seus pedidos antes de finalizar. Tudo pronto para levar o
               sabor do Nordeste até você.
