@@ -4,37 +4,6 @@ const Footer = () => {
   return (
     <footer className="bg-secondary text-white">
       <div className="container-base py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Cardápio</h3>
-
-          <NavLink
-            to="/menu"
-            className="w-fit text-white/80 hover:text-primary transition-all duration-200"
-          >
-            Salgados
-          </NavLink>
-
-          <NavLink
-            to="/menu"
-            className="w-fit text-white/80 hover:text-primary transition-all duration-200"
-          >
-            Pratos
-          </NavLink>
-
-          <NavLink
-            to="/menu"
-            className="w-fit text-white/80 hover:text-primary transition-all duration-200"
-          >
-            Doces
-          </NavLink>
-
-          <NavLink
-            to="/menu"
-            className="w-fit text-white/80 hover:text-primary transition-all duration-200"
-          >
-            Bebidas
-          </NavLink>
-        </div>
 
         <div className="flex flex-col gap-2">
           <h3 className="font-bold text-lg">Conta</h3>
