@@ -8,6 +8,8 @@ const MenuSection = () => {
   const { cartItems, setCartItems, selectedUnit, setSelectedUnit } = useShop();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -29,6 +31,19 @@ const MenuSection = () => {
   }, []);
 
   const units = ["Recife", "Olinda", "Jaboatão"];
+
+  const filteredProducts = products.filter((item) => {
+    const searchTerm = search.toLowerCase().trim();
+    const matchesCategory =
+      selectedCategory === "Todos" || item.category === selectedCategory;
+    const matchesSearch =
+      searchTerm.length === 0 ||
+      `${item.title} ${item.description} ${item.category}`
+        .toLowerCase()
+        .includes(searchTerm);
+
+    return matchesCategory && matchesSearch;
+  });
 
   const addToCart = (product: (typeof products)[number]) => {
     if (!product.available) return;
@@ -98,6 +113,8 @@ const MenuSection = () => {
           <input
             type="text"
             placeholder="Buscar por prato, ingrediente ou categoria..."
+            value={search}
+            onChange={(event) => setSearch(event.target.value)}
             className="w-full outline-none px-4 py-2 text-sm"
           />
         </div>
@@ -107,7 +124,7 @@ const MenuSection = () => {
             <h2 className="text-2xl font-bold text-secondary">Categorias</h2>
 
             <p className="text-sm text-foreground/60">
-              {products.length} itens disponíveis
+              {filteredProducts.length} itens disponíveis
             </p>
           </div>
 
@@ -115,6 +132,7 @@ const MenuSection = () => {
             {categories.map((category, index) => (
               <button
                 key={index}
+                onClick={() => setSelectedCategory(category.label)}
                 className={`px-5 py-3 rounded-xl border text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
                   index === 0
                     ? "bg-primary text-white border-primary"
@@ -167,65 +185,69 @@ const MenuSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
-          {products.map((item) => (
-            <div
-              key={item.id}
-              className="card-hover overflow-hidden transition-all duration-300 border-muted/20"
-            >
-              <div className="relative h-56 overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
-                />
+        {filteredProducts.length === 0 ? (
+          <p className="text-sm text-soft">Nenhum produto encontrado.</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+            {filteredProducts.map((item) => (
+              <div
+                key={item.id}
+                className="card-hover overflow-hidden transition-all duration-300 border-muted/20"
+              >
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
+                  />
 
-                {!item.available && (
-                  <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                    <span className="bg-white px-4 py-2 rounded-full text-sm font-semibold">
-                      Indisponível
-                    </span>
+                  {!item.available && (
+                    <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                      <span className="bg-white px-4 py-2 rounded-full text-sm font-semibold">
+                        Indisponível
+                      </span>
+                    </div>
+                  )}
+
+                  <span className="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+                    -{item.discountPercent ?? 0}%
+                  </span>
+                </div>
+
+                <div className="p-5 flex flex-col gap-4 h-60">
+                  <div className="flex-1">
+                    <h3 className="text-xl font-bold text-secondary">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-sm text-soft mt-2 leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
-                )}
 
-                <span className="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-                  -{item.discountPercent ?? 0}%
-                </span>
-              </div>
+                  <div className="mt-auto flex items-center justify-between gap-4">
+                    <p className="text-2xl font-bold text-primary">
+                      R$ {item.price.toFixed(2).replace(".", ",")}
+                    </p>
 
-              <div className="p-5 flex flex-col gap-4 h-60">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-secondary">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-sm text-soft mt-2 leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-
-                <div className="mt-auto flex items-center justify-between gap-4">
-                  <p className="text-2xl font-bold text-primary">
-                    R$ {item.price.toFixed(2).replace(".", ",")}
-                  </p>
-
-                  <button
-                    type="button"
-                    disabled={!item.available}
-                    onClick={() => addToCart(item)}
-                    className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
-                      item.available
-                        ? "bg-primary text-white hover:bg-secondary"
-                        : "bg-primary/30 text-white cursor-not-allowed"
-                    }`}
-                  >
-                    + Adicionar
-                  </button>
+                    <button
+                      type="button"
+                      disabled={!item.available}
+                      onClick={() => addToCart(item)}
+                      className={`px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                        item.available
+                          ? "bg-primary text-white hover:bg-secondary"
+                          : "bg-primary/30 text-white cursor-not-allowed"
+                      }`}
+                    >
+                      + Adicionar
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

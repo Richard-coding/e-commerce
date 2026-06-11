@@ -70,7 +70,7 @@ export function ShopProvider({ children }: ShopProviderProps) {
     return sum + itemDiscount;
   }, 0);
 
-  const deliveryFee = subtotal > 0 ? 8 : 0;
+  const deliveryFee = subtotal === 0 || subtotal >= 60 ? 0 : 8;
 
   const total = Math.max(0, subtotal + deliveryFee - discount);
 
@@ -116,7 +116,7 @@ export function ShopProvider({ children }: ShopProviderProps) {
   };
 
   const confirmPayment = () => {
-    if (cartItems.length === 0) return;
+    if (cartItems.length === 0 || paymentStatus === "paid") return;
 
     setPaymentStatus("paid");
     setOrderStatus("preparing");
