@@ -120,7 +120,8 @@ export function ShopProvider({ children }: ShopProviderProps) {
 
     setPaymentStatus("paid");
     setOrderStatus("preparing");
-    setLoyaltyPoints(loyaltyPoints + pointsEarned);
+    setLoyaltyPoints((prev) => prev + pointsEarned);
+    setCartItems([]);
   };
 
   return (
