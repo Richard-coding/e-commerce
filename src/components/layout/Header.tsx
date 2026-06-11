@@ -15,6 +15,7 @@ import {
 import Shrimp from "@/assets/icons/shrimp.svg?react";
 import { useShop } from "@/hooks/useShop";
 import { useUser } from "@/hooks/useUser";
+import PointsBadge from "../ui/PointsBadge";
 
 const links = [
   { label: "Cardápio", to: "/menu", icon: UtensilsCrossed },
@@ -30,17 +31,25 @@ const Header = () => {
   const mobileRef = useRef<HTMLDivElement | null>(null);
 
   const { currentUser, logoutUser } = useUser();
-  const { cartItems } = useShop();
+  const { cartItems, loyaltyPoints } = useShop();
   const navigate = useNavigate();
 
-  const cartCount = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0,
-  );
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const closeMenus = () => {
     setMenu(false);
     setMobile(false);
+  };
+
+  const handleLogout = () => {
+    logoutUser();
+    closeMenus();
+    navigate("/login");
+  };
+
+  const handleLogin = () => {
+    closeMenus();
+    navigate("/login");
   };
 
   useEffect(() => {
@@ -65,31 +74,33 @@ const Header = () => {
 
   return (
     <nav className="w-full shadow-sm top-0 z-50 header-base">
-      <div className="container-base flex items-center justify-between py-4">
-        <NavLink to="/" className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-full flex items-center justify-center bg-primary shadow-md transition-colors duration-200 hover:bg-secondary">
-            <Shrimp className="w-5 h-5 text-white" />
+      <div className="container-base flex items-center justify-between gap-4 py-4">
+        <NavLink to="/" className="flex min-w-0 items-center gap-3">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-primary shadow-md transition-colors duration-200 hover:bg-secondary">
+            <Shrimp className="h-5 w-5 text-white" />
           </div>
 
-          <div>
-            <h1 className="text-lg font-bold tracking-wide text-foreground">
+          <div className="min-w-0">
+            <h1 className="truncate text-lg font-bold tracking-wide text-foreground">
               Raízes do Nordeste
             </h1>
 
-            <p className="text-sm text-zinc-500 leading-none">
+            <p className="truncate text-sm leading-none text-zinc-500">
               Sabores da nossa terra
             </p>
           </div>
         </NavLink>
 
-        <div className="hidden sm:flex items-center gap-4">
-          <div className="flex items-center gap-6">
+        <div className="hidden items-center gap-5 sm:flex">
+          <PointsBadge points={loyaltyPoints} />
+
+          <div className="flex items-center gap-5">
             {links.map(({ to, label }) => (
               <NavLink
                 key={to}
                 to={to}
                 className={({ isActive }) =>
-                  `text-sm font-medium transition-colors duration-200 ${
+                  `whitespace-nowrap text-sm font-medium transition-colors duration-200 ${
                     isActive ? "text-primary" : "link-base"
                   }`
                 }
@@ -99,64 +110,62 @@ const Header = () => {
             ))}
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <NavLink
               to="/cart"
               className={({ isActive }) =>
-                `relative p-3 rounded-full transition-colors duration-200 ${
+                `relative rounded-full p-3 transition-colors duration-200 ${
                   isActive
                     ? "bg-primary/10 text-primary"
-                    : "hover:bg-primary/10 text-foreground"
+                    : "text-foreground hover:bg-primary/10"
                 }`
               }
               aria-label="Carrinho"
             >
-              <ShoppingCartIcon className="w-5 h-5" />
-              <span className="absolute -top-1 -right-1 min-w-5 h-5 px-1 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">
+              <ShoppingCartIcon className="h-5 w-5" />
+
+              <span className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 text-xs font-bold text-white">
                 {cartCount}
               </span>
             </NavLink>
 
             <div
               ref={menuRef}
-              className="flex items-center text-sm gap-1 text-black relative"
+              className="relative flex items-center gap-2 text-sm text-black"
             >
-              <p>{currentUser?.name ?? "Login"}</p>
+              <p className="max-w-24 truncate">
+                {currentUser?.name ?? "Login"}
+              </p>
 
               <button
                 type="button"
-                className="p-3 rounded-full transition-colors duration-200 hover:bg-primary/10 cursor-pointer"
+                className="cursor-pointer rounded-full p-3 transition-colors duration-200 hover:bg-primary/10"
                 onClick={() => setMenu((prev) => !prev)}
                 aria-label="Menu do usuário"
               >
-                <UserIcon className="w-5 h-5 text-foreground" />
+                <UserIcon className="h-5 w-5 text-foreground" />
               </button>
 
               {menu && (
-                <div className="absolute w-40 bg-white top-12 right-0 shadow-md rounded-xl border border-muted/10 p-1">
-                  <ul className="flex flex-col gap-2">
+                <div className="absolute right-0 top-12 w-40 rounded-xl border border-muted/10 bg-white p-1 text-sm shadow-md">
+                  <ul className="flex flex-col gap-1">
                     <li>
                       {currentUser ? (
                         <button
                           type="button"
-                          className="hover:bg-primary/10 p-2 w-full rounded-xl flex gap-4 items-center cursor-pointer text-sm transition-colors duration-200"
-                          onClick={() => {
-                            logoutUser();
-                            navigate("/login");
-                          }}
+                          className="flex w-full cursor-pointer items-center gap-3 rounded-xl p-2 transition-colors duration-200 hover:bg-primary/10"
+                          onClick={handleLogout}
                         >
-                          <LogOut className="w-5 h-5" />
+                          <LogOut className="h-5 w-5" />
                           Sair
                         </button>
                       ) : (
                         <button
                           type="button"
-                          className="hover:bg-primary/10 p-2 w-full rounded-xl flex gap-4 items-center cursor-pointer text-sm transition-colors duration-200"
-                          onClick={() => {
-                            navigate("/login");
-                          }}
+                          className="flex w-full cursor-pointer items-center gap-3 rounded-xl p-2 transition-colors duration-200 hover:bg-primary/10"
+                          onClick={handleLogin}
                         >
-                          <LogIn className="w-5 h-5" />
+                          <LogIn className="h-5 w-5" />
                           Fazer login
                         </button>
                       )}
@@ -168,33 +177,45 @@ const Header = () => {
           </div>
         </div>
 
-        <div ref={mobileRef} className="relative sm:hidden z-10">
+        <div
+          ref={mobileRef}
+          className="relative z-10 flex shrink-0 items-center sm:hidden"
+        >
           <button
             type="button"
-            className="cursor-pointer bg-primary text-white p-3 rounded-full shadow-md transition-colors duration-200 hover:bg-secondary"
+            className="cursor-pointer rounded-full bg-primary p-3 text-white shadow-md transition-colors duration-200 hover:bg-secondary"
             onClick={() => setMobile((prev) => !prev)}
             aria-label="Abrir menu"
           >
-            {mobile ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobile ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
 
           {mobile && (
-            <div className="absolute w-48 bg-white top-12 right-0 shadow-md rounded-xl border border-muted/10 p-1 text-sm">
-              <ul className="flex flex-col gap-1">
+            <div className="absolute right-0 top-12 w-52 rounded-xl border border-muted/10 bg-white text-sm shadow-md">
+              <div className="flex w-full items-center justify-center border-b border-muted/30 px-4 py-3">
+                <p className="text-primary font-semibold">
+                  Meus pontos{" "}
+                  <span >
+                    {loyaltyPoints}
+                  </span>
+                </p>
+              </div>
+
+              <ul className="flex flex-col gap-1 p-1">
                 {links.map(({ label, to, icon: Icon }) => (
                   <li key={to}>
                     <NavLink
                       to={to}
                       className={({ isActive }) =>
-                        `py-2 px-4 w-full rounded-xl flex gap-4 items-center transition-colors duration-200 ${
+                        `flex w-full items-center gap-3 rounded-xl px-4 py-2 transition-colors duration-200 ${
                           isActive
-                            ? "bg-primary/10 text-primary font-semibold"
-                            : "hover:bg-primary/10 text-foreground"
+                            ? "bg-primary/10 font-semibold text-primary"
+                            : "text-foreground hover:bg-primary/10"
                         }`
                       }
                       onClick={closeMenus}
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="h-5 w-5" />
                       {label}
                     </NavLink>
                   </li>
@@ -204,45 +225,44 @@ const Header = () => {
                   <NavLink
                     to="/cart"
                     className={({ isActive }) =>
-                      `py-2 px-4 w-full rounded-xl flex gap-4 items-center transition-colors duration-200 relative ${
+                      `relative flex w-full items-center gap-3 rounded-xl px-4 py-2 transition-colors duration-200 ${
                         isActive
-                          ? "bg-primary/10 text-primary font-semibold"
-                          : "hover:bg-primary/10 text-foreground"
+                          ? "bg-primary/10 font-semibold text-primary"
+                          : "text-foreground hover:bg-primary/10"
                       }`
                     }
                     onClick={closeMenus}
                   >
-                    <span className="absolute -top-2 left-8 min-w-5 h-5 px-1 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">
+                    <span className="absolute -top-2 left-8 flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 text-xs font-bold text-white">
                       {cartCount}
                     </span>
-                    <ShoppingCartIcon className="w-5 h-5" />
+
+                    <ShoppingCartIcon className="h-5 w-5" />
                     Carrinho
                   </NavLink>
                 </li>
 
-                {currentUser ? (
-                  <li>
+                <li>
+                  {currentUser ? (
                     <button
                       type="button"
-                      className="hover:bg-primary/10 py-2 px-4 w-full rounded-xl flex gap-4 items-center cursor-pointer transition-colors duration-200"
-                      onClick={logoutUser}
+                      className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-4 py-2 transition-colors duration-200 hover:bg-primary/10"
+                      onClick={handleLogout}
                     >
-                      <LogOut className="w-5 h-5" />
+                      <LogOut className="h-5 w-5" />
                       Sair
                     </button>
-                  </li>
-                ) : (
-                  <li>
+                  ) : (
                     <button
                       type="button"
-                      className="hover:bg-primary/10 py-2 px-4 w-full rounded-xl flex gap-4 items-center cursor-pointer transition-colors duration-200"
-                      onClick={() => navigate("/login")}
+                      className="flex w-full cursor-pointer items-center gap-3 rounded-xl px-4 py-2 transition-colors duration-200 hover:bg-primary/10"
+                      onClick={handleLogin}
                     >
-                      <LogIn className="w-5 h-5" />
+                      <LogIn className="h-5 w-5" />
                       Fazer login
                     </button>
-                  </li>
-                )}
+                  )}
+                </li>
               </ul>
             </div>
           )}
