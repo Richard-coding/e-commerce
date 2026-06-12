@@ -1,33 +1,48 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Input from "@/components/inputs/Input";
 import { useState, type SubmitEventHandler } from "react";
 import toast from "react-hot-toast";
 import Brand from "@/components/ui/Brand.tsx";
 import { useUser } from "@/hooks/useUser";
 
+interface LocationState {
+  redirectTo?: string;
+}
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { loginUser } = useUser();
 
-  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    if (loginUser(email, password)) {
-      toast.success("Login efetuado com sucesso", { id: "sucess" });
-      navigate("/");
-    } else {
-      toast.error("algo deu errado", { id: "sucess" });
+  const state = location.state as LocationState | null;
+  const redirectTo = state?.redirectTo ?? "/";
+
+  const handleSubmit: SubmitEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+
+    const success = loginUser(email, password);
+
+    if (!success) {
+      toast.error("E-mail ou senha inválidos.", { id: "login-error" });
+      return;
     }
+
+    toast.success("Login efetuado com sucesso.", { id: "login-success" });
+    navigate(redirectTo, { replace: true });
   };
 
   return (
     <main className="flex min-h-dvh items-center justify-center px-4 py-8 border app-background">
       <section className="card-base w-full max-w-96 p-6 border-muted/20 shadow">
         <Brand />
+
         <div className="mb-6 text-center">
           <h2 className="text-3xl md:text-4xl font-bold">Entrar</h2>
+
           <p className="mt-2 text-sm text-muted">
             Acesse sua conta para explorar os fluxos da aplicação.
           </p>
@@ -69,10 +84,11 @@ const Login = () => {
             Entrar
           </button>
         </form>
+
         <div className="text-center my-4">
           <p className="text-sm">
             Não tem conta?{" "}
-            <Link to="/register" className=" text-primary hover:underline">
+            <Link to="/register" className="text-primary hover:underline">
               Cadastre-se
             </Link>
           </p>
