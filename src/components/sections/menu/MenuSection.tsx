@@ -3,15 +3,27 @@ import { categories } from "@/data/Categories";
 import { useShop } from "@/hooks/useShop";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const MenuSection = () => {
-  const { cartItems, setCartItems, selectedUnit, setSelectedUnit } = useShop();
+  const { addToCart, selectedUnit, setSelectedUnit } = useShop();
+  const [searchParams] = useSearchParams();
 
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("Todos");
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const categoryFromUrl = searchParams.get("category");
+
+    if (categoryFromUrl) {
+      setSelectedCategory(categoryFromUrl);
+    } else {
+      setSelectedCategory("Todos");
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -41,40 +53,28 @@ const MenuSection = () => {
       `${item.title} ${item.description} ${item.category}`
         .toLowerCase()
         .includes(searchTerm);
+    const matchesUnit = item.units.includes(selectedUnit);
+
+    return matchesCategory && matchesSearch && matchesUnit;
+  });
+
+  const productsWithoutUnitFilter = products.filter((item) => {
+    const searchTerm = search.toLowerCase().trim();
+    const matchesCategory =
+      selectedCategory === "Todos" || item.category === selectedCategory;
+    const matchesSearch =
+      searchTerm.length === 0 ||
+      `${item.title} ${item.description} ${item.category}`
+        .toLowerCase()
+        .includes(searchTerm);
 
     return matchesCategory && matchesSearch;
   });
 
-  const addToCart = (product: (typeof products)[number]) => {
-    if (!product.available) return;
-
-    const existingItem = cartItems.find((item) => item.id === product.id);
-
-    if (existingItem) {
-      setCartItems(
-        cartItems.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item,
-        ),
-      );
-    } else {
-      setCartItems([
-        ...cartItems,
-        {
-          id: product.id,
-          name: product.title,
-          description: product.description,
-          price: product.price,
-          oldPrice: product.oldPrice,
-          discountPercent: product.discountPercent,
-          quantity: 1,
-          image: product.image,
-          unavailable: !product.available,
-        },
-      ]);
-    }
-  };
+  const emptyMessage =
+    productsWithoutUnitFilter.length > 0 && filteredProducts.length === 0
+      ? "Nenhum produto encontrado para esta unidade."
+      : "Nenhum produto encontrado.";
 
   return (
     <section className="section-base">
@@ -129,12 +129,12 @@ const MenuSection = () => {
           </div>
 
           <div className="flex gap-3 overflow-x-auto pb-2">
-            {categories.map((category, index) => (
+            {categories.map((category) => (
               <button
-                key={index}
+                key={category.label}
                 onClick={() => setSelectedCategory(category.label)}
                 className={`px-5 py-3 rounded-xl border text-sm font-semibold transition-all duration-200 whitespace-nowrap ${
-                  index === 0
+                  selectedCategory === category.label
                     ? "bg-primary text-white border-primary"
                     : "btn-ghost"
                 }`}
@@ -186,7 +186,7 @@ const MenuSection = () => {
         </div>
 
         {filteredProducts.length === 0 ? (
-          <p className="text-sm text-soft">Nenhum produto encontrado.</p>
+          <p className="text-sm text-soft">{emptyMessage}</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
             {filteredProducts.map((item) => (
