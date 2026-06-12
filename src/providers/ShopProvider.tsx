@@ -128,8 +128,7 @@ export function ShopProvider({ children }: ShopProviderProps) {
 
   const deliveryFee = subtotal === 0 || subtotal >= 60 ? 0 : 8;
 
-  const couponDiscount =
-    appliedCoupon === "NORDESTE10" ? subtotal * 0.1 : 0;
+  const couponDiscount = appliedCoupon === "NORDESTE10" ? subtotal * 0.1 : 0;
 
   const total = Math.max(0, subtotal + deliveryFee - discount - couponDiscount);
 
@@ -258,8 +257,12 @@ export function ShopProvider({ children }: ShopProviderProps) {
     setPaymentStatus("paid");
     setOrderStatus("preparing");
     setLoyaltyPoints((prev) => prev + pointsEarned);
+
     setCartItems([]);
     setAppliedCoupon("");
+    setOrderNotes("");
+    setSelectedPayment("PIX");
+    setSelectedAddress(addresses[0]);
   };
 
   return (
