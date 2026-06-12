@@ -10,6 +10,33 @@ export interface CartItem {
   unavailable?: boolean;
 }
 
+export interface Product {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  oldPrice?: number;
+  discountPercent?: number;
+  image: string;
+  category: string;
+  available: boolean;
+  units: string[];
+}
+
+export interface LastOrderSummary {
+  items: CartItem[];
+  subtotal: number;
+  discount: number;
+  couponDiscount: number;
+  deliveryFee: number;
+  total: number;
+  selectedPayment: string;
+  orderNotes: string;
+  selectedAddress: string;
+  selectedUnit: string;
+  appliedCoupon: string;
+}
+
 export type PaymentStatus = "pending" | "paid";
 
 export type OrderStatus = "pending" | "preparing";

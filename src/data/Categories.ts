@@ -1,8 +1,9 @@
 import {
   CupSoda,
   IceCreamBowl,
-  Utensils,
+  Package,
   Pizza,
+  Utensils,
   UtensilsCrossed,
   type LucideIcon,
 } from "lucide-react";
@@ -14,9 +15,9 @@ export interface Category {
 
 export const categories: Category[] = [
   { label: "Todos", icon: Utensils },
-  { label: "Salgados", icon: Pizza },
   { label: "Pratos", icon: UtensilsCrossed },
-  { label: "Doces", icon: IceCreamBowl },
+  { label: "Lanches", icon: Pizza },
   { label: "Bebidas", icon: CupSoda },
   { label: "Sobremesas", icon: IceCreamBowl },
+  { label: "Combos", icon: Package },
 ];
