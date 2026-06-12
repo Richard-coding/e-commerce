@@ -12,6 +12,7 @@ import { NavLink } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { addresses } from "@/data/Addresses";
 import { useShop } from "@/hooks/useShop";
+import { useUser } from "@/hooks/useUser";
 import CartPayment from "./CartPayment";
 
 const paymentOptions = ["PIX", "Cartão", "Dinheiro"];
@@ -29,7 +30,30 @@ const CheckoutSection = () => {
     paymentStatus,
   } = useShop();
 
+  const { currentUser } = useUser();
   const [isAddressListOpen, setIsAddressListOpen] = useState(false);
+
+  if (!currentUser) {
+    return (
+      <section className="section-base">
+        <div className="container-base pt-10">
+          <div className="card-base rounded-3xl border-muted/20 p-8 text-center">
+            <h2 className="text-2xl font-bold text-secondary">
+              Faça login para continuar
+            </h2>
+
+            <p className="text-soft mt-2">
+              Você precisa estar autenticado para finalizar o pedido.
+            </p>
+
+            <NavLink to="/login" className="btn-primary inline-flex mt-4">
+              Ir para login
+            </NavLink>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   if (cartItems.length === 0 && paymentStatus !== "paid") {
     return (
@@ -39,9 +63,11 @@ const CheckoutSection = () => {
             <h2 className="text-2xl font-bold text-secondary">
               Seu carrinho está vazio
             </h2>
+
             <p className="text-soft mt-2">
               Adicione produtos ao carrinho antes de finalizar o pedido.
             </p>
+
             <NavLink to="/menu" className="btn-primary inline-flex mt-4">
               Ver cardápio
             </NavLink>
@@ -59,10 +85,12 @@ const CheckoutSection = () => {
             <h2 className="text-2xl font-bold text-secondary">
               Pagamento já aprovado
             </h2>
+
             <p className="text-soft mt-2">
               Seu pedido já foi confirmado. Acompanhe o andamento na página de
               pedido.
             </p>
+
             <NavLink to="/order" className="btn-primary inline-flex mt-4">
               Acompanhar pedido
             </NavLink>
@@ -93,7 +121,9 @@ const CheckoutSection = () => {
               Etapa final
             </span>
 
-            <h1 className="text-3xl md:text-4xl font-bold mt-5">Finalize seu pedido</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mt-5">
+              Finalize seu pedido
+            </h1>
 
             <p className="text-white/80 text-base sm:text-lg mt-4 max-w-xl leading-relaxed">
               Confirme seus dados antes de finalizar. Tudo pronto para levar o
@@ -139,7 +169,9 @@ const CheckoutSection = () => {
               <div className="border border-muted/20 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                   <p className="font-semibold">Endereço selecionado</p>
-                  <p className="text-sm text-foreground/60">{selectedAddress}</p>
+                  <p className="text-sm text-foreground/60">
+                    {selectedAddress}
+                  </p>
                 </div>
 
                 <button
