@@ -27,6 +27,7 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
     subtotal,
     deliveryFee,
     discount,
+    couponDiscount,
     total,
     pointsEarned,
     paymentStatus,
@@ -84,9 +85,18 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
 
         {discount > 0 && (
           <div className="flex items-center justify-between">
-            <span className="text-soft">Desconto</span>
+            <span className="text-soft">Desconto dos produtos</span>
             <span className="font-medium text-primary text-lg">
               - R$ {formatPrice(discount)}
+            </span>
+          </div>
+        )}
+
+        {couponDiscount > 0 && (
+          <div className="flex items-center justify-between">
+            <span className="text-soft">Desconto do cupom</span>
+            <span className="font-medium text-primary text-lg">
+              - R$ {formatPrice(couponDiscount)}
             </span>
           </div>
         )}

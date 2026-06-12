@@ -1,3 +1,4 @@
+import { useState, type KeyboardEvent } from "react";
 import {
   Clock,
   MapPin,
@@ -13,9 +14,52 @@ import CartPayment from "./CartPayment";
 
 const formatPrice = (value: number) => value.toFixed(2).replace(".", ",");
 
+const getFreteMessage = (subtotal: number) => {
+  if (subtotal === 0) {
+    return "Adicione produtos para calcular o frete.";
+  }
+
+  if (subtotal >= 60) {
+    return "Você ganhou frete grátis.";
+  }
+
+  const falta = 60 - subtotal;
+  return `Faltam R$ ${formatPrice(falta)}`;
+};
+
 const Cart = () => {
-  const { cartItems, selectedUnit, increaseQuantity, decreaseQuantity } =
-    useShop();
+  const {
+    cartItems,
+    selectedUnit,
+    selectedAddress,
+    subtotal,
+    increaseQuantity,
+    decreaseQuantity,
+    applyCoupon,
+  } = useShop();
+
+  const [couponInput, setCouponInput] = useState("");
+  const [couponMessage, setCouponMessage] = useState("");
+
+  const handleApplyCoupon = () => {
+    const result = applyCoupon(couponInput);
+
+    if (result === "success") {
+      setCouponMessage("Cupom NORDESTE10 aplicado com sucesso!");
+      return;
+    }
+
+    setCouponMessage("Cupom inválido. Tente NORDESTE10.");
+  };
+
+  const handleCouponKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleApplyCoupon();
+    }
+  };
+
+  const freteMessage = getFreteMessage(subtotal);
 
   return (
     <section className="section-base min-h-screen">
@@ -130,17 +174,15 @@ const Cart = () => {
                               )}
 
                               <strong className="text-lg font-bold text-primary">
-                                R$ {formatPrice(item.price)}
+                                R$ {formatPrice(item.price)} cada
                               </strong>
                             </div>
                           </div>
 
-                          {item.quantity > 1 && (
-                            <p className="text-sm text-soft">
-                              Total: R${" "}
-                              {formatPrice(item.price * item.quantity)}
-                            </p>
-                          )}
+                          <p className="text-sm text-soft">
+                            Total do item: R${" "}
+                            {formatPrice(item.price * item.quantity)}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -157,17 +199,43 @@ const Cart = () => {
                 </h3>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-3">
+              <form
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  handleApplyCoupon();
+                }}
+                className="flex flex-col sm:flex-row gap-3"
+              >
                 <input
                   type="text"
                   placeholder="Digite seu cupom..."
+                  value={couponInput}
+                  onChange={(event) => setCouponInput(event.target.value)}
+                  onKeyDown={handleCouponKeyDown}
                   className="input-base flex-1 rounded-2xl border-muted/20"
                 />
 
-                <button type="button" className="btn-ghost">
+                <button type="submit" className="btn-ghost">
                   Aplicar
                 </button>
-              </div>
+              </form>
+
+              <p className="text-sm text-foreground/60 mt-3">
+                Cupom demonstrativo: use NORDESTE10 para aplicar 10% de desconto
+                neste protótipo.
+              </p>
+
+              {couponMessage && (
+                <p
+                  className={`text-sm mt-2 ${
+                    couponMessage.includes("sucesso")
+                      ? "text-green-600"
+                      : "text-red-500"
+                  }`}
+                >
+                  {couponMessage}
+                </p>
+              )}
             </div>
           </div>
 
@@ -187,10 +255,8 @@ const Cart = () => {
                 <div className="flex gap-3">
                   <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-semibold">{selectedUnit} — Boa Viagem</p>
-                    <p className="text-foreground/60">
-                      Av. Boa Viagem, 1234 — PE
-                    </p>
+                    <p className="font-semibold">{selectedUnit}</p>
+                    <p className="text-foreground/60">{selectedAddress}</p>
                   </div>
                 </div>
 
@@ -206,7 +272,7 @@ const Cart = () => {
                   <TicketPercent className="w-5 h-5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold">Frete grátis acima de R$ 60</p>
-                    <p className="text-foreground/60">Faltam R$ 0,00</p>
+                    <p className="text-foreground/60">{freteMessage}</p>
                   </div>
                 </div>
               </div>
