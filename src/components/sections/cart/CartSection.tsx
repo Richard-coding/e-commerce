@@ -6,6 +6,7 @@ import {
   Plus,
   Receipt,
   TicketPercent,
+  Trash2,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useShop } from "@/hooks/useShop";
@@ -36,6 +37,7 @@ const Cart = () => {
     increaseQuantity,
     decreaseQuantity,
     applyCoupon,
+    removeItem,
   } = useShop();
 
   const [couponInput, setCouponInput] = useState("");
@@ -184,6 +186,14 @@ const Cart = () => {
                             {formatPrice(item.price * item.quantity)}
                           </p>
                         </div>
+                        <button
+                          type="button"
+                          onClick={() => removeItem(item.id)}
+                          className="absolute top-6 right-6 text-foreground/50 hover:text-red-500 transition-all duration-200"
+                          aria-label="Remover item do carrinho"
+                        >
+                          <Trash2 className="w-5 h-5" />
+                        </button>
                       </div>
                     </div>
                   </div>
