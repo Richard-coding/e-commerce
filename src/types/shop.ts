@@ -48,6 +48,7 @@ export interface ShopContextType {
   cartItems: CartItem[];
   setCartItems: (items: CartItem[]) => void;
 
+  addToCart: (product: Product, successMessage?: string) => boolean;
   increaseQuantity: (id: number) => void;
   decreaseQuantity: (id: number) => void;
   removeItem: (id: number) => void;
@@ -55,7 +56,22 @@ export interface ShopContextType {
   subtotal: number;
   deliveryFee: number;
   discount: number;
+  couponDiscount: number;
   total: number;
+
+  appliedCoupon: string;
+  applyCoupon: (code: string) => "success" | "error";
+
+  selectedAddress: string;
+  setSelectedAddress: (address: string) => void;
+
+  selectedPayment: string;
+  setSelectedPayment: (payment: string) => void;
+
+  orderNotes: string;
+  setOrderNotes: (notes: string) => void;
+
+  lastOrder: LastOrderSummary | null;
 
   loyaltyPoints: number;
   pointsEarned: number;

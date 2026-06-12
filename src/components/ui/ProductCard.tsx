@@ -1,50 +1,12 @@
 import { useShop } from "@/hooks/useShop";
+import type { Product } from "@/types/shop";
 import { Plus } from "lucide-react";
 
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  price: number;
-  oldPrice?: number;
-  discountPercent?: number;
-  image: string;
-  category: string;
-  available: boolean;
-}
-
 const ProductCard = ({ product }: { product: Product }) => {
-  const { cartItems, setCartItems } = useShop();
+  const { addToCart } = useShop();
 
-  const addToCart = () => {
-    if (!product.available) return;
-
-    const existingItem = cartItems.find((item) => item.id === product.id);
-
-    if (existingItem) {
-      setCartItems(
-        cartItems.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item,
-        ),
-      );
-    } else {
-      setCartItems([
-        ...cartItems,
-        {
-          id: product.id,
-          name: product.title,
-          description: product.description,
-          price: product.price,
-          oldPrice: product.oldPrice,
-          discountPercent: product.discountPercent,
-          quantity: 1,
-          image: product.image,
-          unavailable: !product.available,
-        },
-      ]);
-    }
+  const handleAddToCart = () => {
+    addToCart(product);
   };
 
   return (
@@ -78,7 +40,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           <button
             type="button"
             disabled={!product.available}
-            onClick={addToCart}
+            onClick={handleAddToCart}
             className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50"
           >
             <Plus className="w-4 h-4" /> Adicionar
