@@ -1,15 +1,34 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { products } from "@/data/Products";
+import { comboPromoProduct, products } from "@/data/Products";
 import SectionTitle from "@/components/sections/home/HomeSectionTitle";
 import ProductCard from "@/components/ui/ProductCard";
 import { categories } from "@/data/Categories";
+import { useShop } from "@/hooks/useShop";
 
 const HomeSection = () => {
+  const { addToCart } = useShop();
+  const [selectedCategory, setSelectedCategory] = useState("Todos");
+
+  const filteredProducts = products.filter((product) => {
+    if (selectedCategory === "Todos") return true;
+
+    return product.category === selectedCategory;
+  });
+
   return (
     <section className="section-base">
       <div className="container-base">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="relative h-72 rounded-2xl overflow-hidden shadow border border-muted/30">
+          <div
+            onClick={() =>
+              addToCart(
+                comboPromoProduct,
+                "Combo São João adicionado ao carrinho.",
+              )
+            }
+            className="relative h-72 rounded-2xl overflow-hidden shadow border border-muted/30 cursor-pointer"
+          >
             <img
               src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop"
               alt="Combo São João"
@@ -80,15 +99,17 @@ const HomeSection = () => {
           <SectionTitle about="categorias" title="Explore por sabor" />
 
           <div className="flex gap-4 overflow-x-auto pb-2">
-            {categories.map((category, index) => {
+            {categories.map((category) => {
               const Icon = category.icon;
+              const isActive = selectedCategory === category.label;
 
               return (
                 <button
                   type="button"
                   key={category.label}
+                  onClick={() => setSelectedCategory(category.label)}
                   className={`min-w-32 shrink-0 rounded-2xl border p-5 flex flex-col items-center justify-center gap-3 transition-all duration-200 shadow-sm cursor-pointer ${
-                    index === 0
+                    isActive
                       ? "bg-primary  border-primary"
                       : "bg-white hover:bg-primary/10 border-muted/20"
                   }`}
@@ -110,7 +131,7 @@ const HomeSection = () => {
           <SectionTitle about="Cardápio" title="Mais pedidos hoje" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <ProductCard product={product} key={product.id} />
             ))}
           </div>
