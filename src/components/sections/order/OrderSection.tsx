@@ -3,17 +3,18 @@ import {
   CircleCheck,
   Clock,
   MapPin,
-  Phone,
   ReceiptText,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { steps } from "@/data/steps";
 import { useShop } from "@/hooks/useShop";
 
-const OrderSection = () => {
-  const { orderStatus, selectedUnit } = useShop();
+const formatPrice = (value: number) => value.toFixed(2).replace(".", ",");
 
-  if (orderStatus === "pending") {
+const OrderSection = () => {
+  const { orderStatus, lastOrder } = useShop();
+
+  if (orderStatus === "pending" || !lastOrder) {
     return (
       <section className="section-base min-h-screen">
         <div className="container-base pt-10">
@@ -66,7 +67,7 @@ const OrderSection = () => {
 
               <span className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                {selectedUnit} — Boa Viagem
+                {lastOrder.selectedUnit} — {lastOrder.selectedAddress.split(",")[0]}
               </span>
             </div>
           </div>
@@ -173,23 +174,9 @@ const OrderSection = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
-              <button
-                type="button"
-                className="btn-ghost flex items-center justify-center gap-2"
-              >
-                <Phone className="w-4 h-4" />
-                Falar com restaurante
-              </button>
-
-              <button
-                type="button"
-                className="btn-ghost flex items-center justify-center gap-2"
-              >
-                <Phone className="w-4 h-4" />
-                Ligar para suporte
-              </button>
-            </div>
+            <p className="text-sm text-foreground/60 mt-5 text-center">
+              Este pedido é uma simulação para fins acadêmicos.
+            </p>
           </div>
 
           <div className="card-base rounded-3xl border-muted/20 p-6">
@@ -200,19 +187,9 @@ const OrderSection = () => {
                 <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
 
                 <div>
-                  <p className="font-semibold">Av. Boa Viagem, 1234</p>
+                  <p className="font-semibold">{lastOrder.selectedAddress}</p>
 
-                  <p className="text-foreground/60">{selectedUnit} — PE</p>
-                </div>
-              </div>
-
-              <div className="flex gap-3">
-                <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-
-                <div>
-                  <p className="font-semibold">Próximo ao Shopping Recife</p>
-
-                  <p className="text-foreground/60">Referência</p>
+                  <p className="text-foreground/60">{lastOrder.selectedUnit}</p>
                 </div>
               </div>
 
@@ -225,6 +202,90 @@ const OrderSection = () => {
                   <p className="text-foreground/60">Tempo estimado</p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-8 card-base rounded-3xl border-muted/20 p-6">
+          <h3 className="text-2xl font-bold text-secondary mb-6">
+            Resumo do pedido
+          </h3>
+
+          <div className="flex flex-col gap-4">
+            {lastOrder.items.map((item) => (
+              <div
+                key={item.id}
+                className="flex items-center justify-between gap-4 border-b border-muted/20 pb-4 last:border-0 last:pb-0"
+              >
+                <div>
+                  <p className="font-semibold text-secondary">{item.name}</p>
+                  <p className="text-sm text-soft">
+                    {item.quantity}x R$ {formatPrice(item.price)}
+                  </p>
+                </div>
+
+                <p className="font-semibold text-primary">
+                  R$ {formatPrice(item.price * item.quantity)}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="border-t border-muted/20 mt-6 pt-6 flex flex-col gap-3 text-sm">
+            <div className="flex justify-between">
+              <span className="text-soft">Subtotal</span>
+              <span>R$ {formatPrice(lastOrder.subtotal)}</span>
+            </div>
+
+            {lastOrder.discount > 0 && (
+              <div className="flex justify-between">
+                <span className="text-soft">Desconto dos produtos</span>
+                <span className="text-primary">
+                  - R$ {formatPrice(lastOrder.discount)}
+                </span>
+              </div>
+            )}
+
+            <div className="flex justify-between">
+              <span className="text-soft">Taxa de entrega</span>
+              <span>R$ {formatPrice(lastOrder.deliveryFee)}</span>
+            </div>
+
+            {lastOrder.appliedCoupon === "NORDESTE10" && (
+              <>
+                <div className="flex justify-between">
+                  <span className="text-soft">Cupom</span>
+                  <span>NORDESTE10</span>
+                </div>
+
+                <div className="flex justify-between">
+                  <span className="text-soft">Desconto do cupom</span>
+                  <span className="text-primary">
+                    - R$ {formatPrice(lastOrder.couponDiscount)}
+                  </span>
+                </div>
+              </>
+            )}
+
+            <div className="flex justify-between text-lg font-bold">
+              <span className="text-secondary">Total</span>
+              <span className="text-primary">
+                R$ {formatPrice(lastOrder.total)}
+              </span>
+            </div>
+
+            <div className="flex justify-between">
+              <span className="text-soft">Pagamento</span>
+              <span>{lastOrder.selectedPayment}</span>
+            </div>
+
+            <div className="flex justify-between gap-4">
+              <span className="text-soft shrink-0">Observações</span>
+              <span className="text-right">
+                {lastOrder.orderNotes.trim()
+                  ? lastOrder.orderNotes
+                  : "Nenhuma observação."}
+              </span>
             </div>
           </div>
         </div>

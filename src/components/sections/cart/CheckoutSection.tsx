@@ -7,11 +7,81 @@ import {
   ShieldCheck,
   TicketPercent,
 } from "lucide-react";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { addresses } from "@/data/Addresses";
 import { useShop } from "@/hooks/useShop";
 import CartPayment from "./CartPayment";
 
+const paymentOptions = ["PIX", "Cartão", "Dinheiro"];
+
 const CheckoutSection = () => {
-  const { selectedUnit } = useShop();
+  const {
+    selectedUnit,
+    selectedAddress,
+    setSelectedAddress,
+    selectedPayment,
+    setSelectedPayment,
+    orderNotes,
+    setOrderNotes,
+    cartItems,
+    paymentStatus,
+  } = useShop();
+
+  const [isAddressListOpen, setIsAddressListOpen] = useState(false);
+
+  if (cartItems.length === 0 && paymentStatus !== "paid") {
+    return (
+      <section className="section-base">
+        <div className="container-base pt-10">
+          <div className="card-base rounded-3xl border-muted/20 p-8 text-center">
+            <h2 className="text-2xl font-bold text-secondary">
+              Seu carrinho está vazio
+            </h2>
+            <p className="text-soft mt-2">
+              Adicione produtos ao carrinho antes de finalizar o pedido.
+            </p>
+            <NavLink to="/menu" className="btn-primary inline-flex mt-4">
+              Ver cardápio
+            </NavLink>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (paymentStatus === "paid") {
+    return (
+      <section className="section-base">
+        <div className="container-base pt-10">
+          <div className="card-base rounded-3xl border-muted/20 p-8 text-center">
+            <h2 className="text-2xl font-bold text-secondary">
+              Pagamento já aprovado
+            </h2>
+            <p className="text-soft mt-2">
+              Seu pedido já foi confirmado. Acompanhe o andamento na página de
+              pedido.
+            </p>
+            <NavLink to="/order" className="btn-primary inline-flex mt-4">
+              Acompanhar pedido
+            </NavLink>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const handleSelectAddress = (address: string) => {
+    setSelectedAddress(address);
+    setIsAddressListOpen(false);
+    toast.success("Endereço selecionado.");
+  };
+
+  const handleSelectPayment = (payment: string) => {
+    setSelectedPayment(payment);
+    toast.success("Forma de pagamento selecionada.");
+  };
 
   return (
     <section className="section-base">
@@ -33,7 +103,7 @@ const CheckoutSection = () => {
             <div className="flex flex-wrap gap-6 mt-6 text-sm text-white/70">
               <span className="flex items-center gap-2">
                 <MapPin className="w-4 h-4" />
-                {selectedUnit} — Boa Viagem
+                {selectedUnit} — {selectedAddress.split(",")[0]}
               </span>
 
               <span className="flex items-center gap-2">
@@ -68,16 +138,37 @@ const CheckoutSection = () => {
 
               <div className="border border-muted/20 rounded-2xl p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <p className="font-semibold">Casa</p>
-                  <p className="text-sm text-foreground/60">
-                    Av. Boa Viagem, 1234 — Recife, PE
-                  </p>
+                  <p className="font-semibold">Endereço selecionado</p>
+                  <p className="text-sm text-foreground/60">{selectedAddress}</p>
                 </div>
 
-                <button type="button" className="btn-ghost">
+                <button
+                  type="button"
+                  className="btn-ghost"
+                  onClick={() => setIsAddressListOpen(!isAddressListOpen)}
+                >
                   Alterar
                 </button>
               </div>
+
+              {isAddressListOpen && (
+                <div className="mt-4 flex flex-col gap-2">
+                  {addresses.map((address) => (
+                    <button
+                      key={address}
+                      type="button"
+                      onClick={() => handleSelectAddress(address)}
+                      className={`w-full text-left rounded-2xl border p-4 transition-all duration-200 ${
+                        selectedAddress === address
+                          ? "border-primary bg-primary/5"
+                          : "border-muted/20 hover:border-primary hover:bg-primary/5"
+                      }`}
+                    >
+                      <p className="font-semibold text-secondary">{address}</p>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="card-base rounded-3xl border-muted/20 p-6">
@@ -96,12 +187,13 @@ const CheckoutSection = () => {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {["PIX", "Cartão", "Dinheiro"].map((payment, index) => (
+                {paymentOptions.map((payment) => (
                   <button
                     type="button"
                     key={payment}
+                    onClick={() => handleSelectPayment(payment)}
                     className={`rounded-2xl border p-5 text-left transition-all duration-200 ${
-                      index === 0
+                      selectedPayment === payment
                         ? "border-primary bg-primary/5"
                         : "border-muted/20 hover:border-primary hover:bg-primary/5"
                     }`}
@@ -136,6 +228,8 @@ const CheckoutSection = () => {
 
               <textarea
                 placeholder="Ex: tirar cebola, pouco molho, entregar na portaria..."
+                value={orderNotes}
+                onChange={(event) => setOrderNotes(event.target.value)}
                 className="input-base w-full min-h-32 rounded-2xl border-muted/20 resize-none bg-transparent"
               />
             </div>

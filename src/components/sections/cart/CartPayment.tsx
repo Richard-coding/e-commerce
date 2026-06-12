@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import { useShop } from "@/hooks/useShop";
 
 type Variant = "cart" | "checkout";
@@ -50,6 +51,7 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
 
     setTimeout(() => {
       confirmPayment();
+      toast.success("Pagamento confirmado.");
       setIsProcessing(false);
 
       setTimeout(() => {
