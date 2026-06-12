@@ -46,7 +46,11 @@ const CheckoutSection = () => {
               Você precisa estar autenticado para finalizar o pedido.
             </p>
 
-            <NavLink to="/login" className="btn-primary inline-flex mt-4">
+            <NavLink
+              to="/login"
+              state={{ redirectTo: "/checkout" }}
+              className="btn-primary inline-flex mt-4"
+            >
               Ir para login
             </NavLink>
           </div>
