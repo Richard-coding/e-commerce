@@ -8,9 +8,10 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { useShop } from "@/hooks/useShop";
+import { useUser } from "@/hooks/useUser";
 
 type Variant = "cart" | "checkout";
 
@@ -20,8 +21,7 @@ interface CartPaymentProps {
   variant: Variant;
 }
 
-const formatPrice = (value: number) =>
-  value.toFixed(2).replace(".", ",");
+const formatPrice = (value: number) => value.toFixed(2).replace(".", ",");
 
 const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
   const {
@@ -36,6 +36,8 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
     cartItems,
   } = useShop();
 
+  const { currentUser } = useUser();
+
   const [isProcessing, setIsProcessing] = useState(false);
 
   const isCart = variant === "cart";
@@ -43,6 +45,29 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
   const isApproved = paymentStatus === "paid";
 
   const navigate = useNavigate();
+
+  const handleGoToCheckout = () => {
+    if (cartItems.length === 0) {
+      toast.error("Adicione produtos ao carrinho.");
+      return;
+    }
+
+    const redirectTo = link ?? "/checkout";
+
+    if (!currentUser) {
+      toast.error("Faça login para continuar.");
+
+      navigate("/login", {
+        state: {
+          redirectTo,
+        },
+      });
+
+      return;
+    }
+
+    navigate(redirectTo);
+  };
 
   const handlePayment = () => {
     if (cartItems.length === 0) return;
@@ -127,21 +152,18 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
       )}
 
       {isCart && (
-        <NavLink
-          to={cartItems.length > 0 ? (link ?? "/checkout") : "#"}
-          onClick={(event) => {
-            if (cartItems.length === 0) event.preventDefault();
-          }}
-          className={`btn-primary w-full flex items-center justify-center mt-4 ${
-            cartItems.length === 0 ? "opacity-50 pointer-events-none" : ""
-          }`}
+        <button
+          type="button"
+          disabled={cartItems.length === 0}
+          onClick={handleGoToCheckout}
+          className="btn-primary w-full flex items-center justify-center mt-4 disabled:opacity-50 disabled:pointer-events-none"
         >
           {label}
-        </NavLink>
+        </button>
       )}
 
       {isProcessing ? (
-        <div className="flex flex-col items-center  border border-muted/30 rounded-2xl text-center p-4 gap-2">
+        <div className="flex flex-col items-center border border-muted/30 rounded-2xl text-center p-4 gap-2">
           <LoaderCircle className="w-5 h-5 animate-spin" />
           <p className="text-soft text-sm">
             Enviando pedido para parceiro de pagamento… <br />
@@ -149,7 +171,7 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
           </p>
         </div>
       ) : isApproved && isCheckout ? (
-        <div className="flex flex-col items-center  border border-muted/30 rounded-2xl text-center p-4 gap-2">
+        <div className="flex flex-col items-center border border-muted/30 rounded-2xl text-center p-4 gap-2">
           <CircleCheck className="w-5 h-5 text-green-500" />
           <p className="text-soft">
             Pagamento aprovado. Redirecionando para a página do pedido…
@@ -161,7 +183,7 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
         <button
           type="button"
           disabled={cartItems.length === 0 || isProcessing || isApproved}
-          className={`${isApproved ? "bg-green-500" : null} btn-primary w-full flex items-center gap-2 justify-center mt-4 disabled:opacity-50`}
+          className={`${isApproved ? "bg-green-500" : ""} btn-primary w-full flex items-center gap-2 justify-center mt-4 disabled:opacity-50`}
           onClick={handlePayment}
         >
           {isProcessing ? (
@@ -171,7 +193,7 @@ const CartPayment = ({ label, link, variant }: CartPaymentProps) => {
             </div>
           ) : isApproved ? (
             <div className="flex items-center gap-2">
-              <Check className="w-4 h-4 " />
+              <Check className="w-4 h-4" />
               Pagamento Aprovado
             </div>
           ) : (
