@@ -9,7 +9,7 @@ export const products: Product[] = [
     oldPrice: 23.53,
     discountPercent: 15,
     image:
-      "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=1200&auto=format&fit=crop",
     category: "Lanches",
     available: true,
     units: ["Recife", "Olinda"],
@@ -22,7 +22,7 @@ export const products: Product[] = [
     oldPrice: 37.65,
     discountPercent: 15,
     image:
-      "https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1200&auto=format&fit=crop",
     category: "Pratos",
     available: true,
     units: ["Recife", "Jaboatão"],
@@ -35,7 +35,7 @@ export const products: Product[] = [
     oldPrice: 41.06,
     discountPercent: 15,
     image:
-      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop",
     category: "Pratos",
     available: true,
     units: ["Olinda", "Jaboatão"],
@@ -48,7 +48,7 @@ export const products: Product[] = [
     oldPrice: 21.76,
     discountPercent: 15,
     image:
-      "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?q=80&w=1200&auto=format&fit=crop",
     category: "Lanches",
     available: true,
     units: ["Olinda", "Jaboatão"],
@@ -61,8 +61,8 @@ export const products: Product[] = [
     oldPrice: 10,
     discountPercent: 15,
     image:
-      "https://images.unsplash.com/photo-1606312619070-d48cbd4c435f?q=80&w=800&auto=format&fit=crop",
-    category: "Lanches",
+      "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1200&auto=format&fit=crop",
+    category: "Sobremesas",
     available: true,
     units: ["Recife"],
   },
@@ -74,8 +74,8 @@ export const products: Product[] = [
     oldPrice: 9.29,
     discountPercent: 15,
     image:
-      "https://images.unsplash.com/photo-1481391319762-47dff72954d9?q=80&w=800&auto=format&fit=crop",
-    category: "Lanches",
+      "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=1200&auto=format&fit=crop",
+    category: "Sobremesas",
     available: true,
     units: ["Olinda", "Jaboatão"],
   },
@@ -85,7 +85,7 @@ export const products: Product[] = [
     description: "Suco natural de cana-de-açúcar bem gelado.",
     price: 6.5,
     image:
-      "https://images.unsplash.com/photo-1625772453499-9b0c26528192?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?q=80&w=1200&auto=format&fit=crop",
     category: "Bebidas",
     available: true,
     units: ["Recife", "Olinda"],
@@ -98,7 +98,7 @@ export const products: Product[] = [
     oldPrice: 11.65,
     discountPercent: 15,
     image:
-      "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600271886742-f049cd451bba?q=80&w=1200&auto=format&fit=crop",
     category: "Bebidas",
     available: true,
     units: ["Recife", "Olinda", "Jaboatão"],
@@ -109,7 +109,7 @@ export const products: Product[] = [
     description: "Água de coco natural servida bem gelada.",
     price: 7.5,
     image:
-      "https://images.unsplash.com/photo-1558642452-9d2a7afff046?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1553530666-ba11a7da3888?q=80&w=1200&auto=format&fit=crop",
     category: "Bebidas",
     available: true,
     units: ["Olinda", "Jaboatão"],
@@ -122,7 +122,7 @@ export const products: Product[] = [
     oldPrice: 17.53,
     discountPercent: 15,
     image:
-      "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=1200&auto=format&fit=crop",
     category: "Sobremesas",
     available: true,
     units: ["Recife", "Olinda"],
@@ -135,7 +135,7 @@ export const products: Product[] = [
     oldPrice: 14.71,
     discountPercent: 15,
     image:
-      "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=1200&auto=format&fit=crop",
     category: "Sobremesas",
     available: true,
     units: ["Recife", "Jaboatão"],
@@ -149,7 +149,7 @@ export const products: Product[] = [
     oldPrice: 19.88,
     discountPercent: 15,
     image:
-      "https://images.unsplash.com/photo-1565958011703-44f9824ba187?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1528207776546-365bb710ee93?q=80&w=1200&auto=format&fit=crop",
     category: "Sobremesas",
     available: false,
     units: ["Recife"],
@@ -163,7 +163,7 @@ export const products: Product[] = [
     oldPrice: 39.99,
     discountPercent: 25,
     image:
-      "https://images.unsplash.com/photo-1504674900247-0877df9cc836?q=80&w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1543353071-10c8ba85a904?q=80&w=1200&auto=format&fit=crop",
     category: "Combos",
     available: true,
     units: ["Recife", "Olinda", "Jaboatão"],

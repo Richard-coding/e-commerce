@@ -117,18 +117,18 @@ const Cart = () => {
                         : "border-muted/20 hover:shadow-md"
                     }`}
                   >
-                    {item.unavailable && (
-                      <span className="absolute top-6 right-6 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
-                        Indisponível
-                      </span>
-                    )}
-
-                    <div className="w-full h-52 sm:w-28 sm:h-28 rounded-2xl overflow-hidden shrink-0">
+                    <div className="relative w-full h-52 sm:w-28 sm:h-28 rounded-2xl overflow-hidden shrink-0">
                       <img
                         src={item.image}
                         alt={item.name}
                         className="w-full h-full object-cover"
                       />
+
+                      {item.unavailable && (
+                        <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">
+                          Indisponível
+                        </span>
+                      )}
                     </div>
 
                     <div className="flex-1 flex flex-col justify-between gap-4">

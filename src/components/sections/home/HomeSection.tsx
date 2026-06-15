@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { comboPromoProduct, products } from "@/data/Products";
+import { comboPromoProduct, products } from "@/data/products";
 import SectionTitle from "@/components/sections/home/HomeSectionTitle";
 import ProductCard from "@/components/ui/ProductCard";
-import { categories } from "@/data/Categories";
+import { categories } from "@/data/categories";
 import { useShop } from "@/hooks/useShop";
 
 const HomeSection = () => {

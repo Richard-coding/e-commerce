@@ -1,5 +1,5 @@
-import { products } from "@/data/Products";
-import { categories } from "@/data/Categories";
+import { products } from "@/data/products";
+import { categories } from "@/data/categories";
 import { useShop } from "@/hooks/useShop";
 import { ChevronDown } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
