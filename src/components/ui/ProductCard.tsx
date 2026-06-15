@@ -18,9 +18,11 @@ const ProductCard = ({ product }: { product: Product }) => {
           className="w-full h-full object-cover hover:scale-105 transition-all duration-500"
         />
 
-        <span className="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-          -{product.discountPercent ?? 0}%
-        </span>
+        {product.discountPercent && product.discountPercent > 0 && (
+          <span className="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+            -{product.discountPercent}%
+          </span>
+        )}
       </div>
 
       <div className="p-4 flex flex-col flex-1 gap-3">

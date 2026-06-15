@@ -209,9 +209,11 @@ const MenuSection = () => {
                     </div>
                   )}
 
-                  <span className="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
-                    -{item.discountPercent ?? 0}%
-                  </span>
+                  {item.discountPercent && item.discountPercent > 0 && (
+                    <span className="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
+                      -{item.discountPercent}%
+                    </span>
+                  )}
                 </div>
 
                 <div className="p-5 flex flex-col gap-4 h-60">
