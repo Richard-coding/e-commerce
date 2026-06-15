@@ -17,6 +17,12 @@ import CartPayment from "./CartPayment";
 
 const paymentOptions = ["PIX", "Cartão", "Dinheiro"];
 
+const getPaymentDescription = (payment: string) => {
+  if (payment === "PIX") return "Pagamento instantâneo simulado";
+
+  return "Pagamento na entrega";
+};
+
 const CheckoutSection = () => {
   const {
     selectedUnit,
@@ -240,7 +246,7 @@ const CheckoutSection = () => {
 
                     <p className="font-bold text-secondary">{payment}</p>
                     <p className="text-sm text-foreground/60 mt-1">
-                      Pagamento na entrega
+                      {getPaymentDescription(payment)}
                     </p>
                   </button>
                 ))}
