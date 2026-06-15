@@ -51,7 +51,7 @@ const OrderSection = () => {
 
             <p className="text-white/80 text-base sm:text-lg mt-4 max-w-xl leading-relaxed">
               Tudo certo por aqui. Já estamos preparando os sabores do Nordeste
-              para você acompanhar cada etapa em tempo real.
+              para você acompanhar as etapas do pedido.
             </p>
 
             <div className="flex flex-wrap gap-6 mt-6 text-sm text-white/70">
