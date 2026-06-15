@@ -44,7 +44,7 @@ const Login = () => {
           <h2 className="text-3xl md:text-4xl font-bold">Entrar</h2>
 
           <p className="mt-2 text-sm text-muted">
-            Acesse sua conta para explorar os fluxos da aplicação.
+            Acesse sua conta para continuar seu pedido neste protótipo acadêmico.
           </p>
         </div>
 
