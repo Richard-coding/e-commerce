@@ -30,7 +30,7 @@ export function ShopProvider({ children }: ShopProviderProps) {
   const [loyaltyPoints, setLoyaltyPoints] = useState<number>(() => {
     const savedPoints = localStorage.getItem("loyaltyPoints");
 
-    if (!savedPoints) return 230;
+    if (!savedPoints) return 0;
 
     return JSON.parse(savedPoints);
   });
