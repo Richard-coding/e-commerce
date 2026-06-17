@@ -1,8 +1,10 @@
 # Raízes do Nordeste
 
-A Front-End application built with React, TypeScript, and Tailwind CSS that simulates a food delivery platform focused on traditional Brazilian Northeastern cuisine.
+Raízes do Nordeste is a web application developed as part of an academic Front-End project. The application simulates a food delivery platform focused on traditional Northeastern Brazilian cuisine.
 
-This project was developed for academic and portfolio purposes, using mock data and Local Storage to simulate authentication, orders, and user preferences.
+Users can create an account, sign in, browse the menu, add products to the cart, apply discount coupons, select delivery information, complete a simulated payment flow, and track their order status.
+
+The project uses Local Storage to simulate data persistence, without a backend or external services.
 
 ## Technologies
 
@@ -11,7 +13,23 @@ This project was developed for academic and portfolio purposes, using mock data 
 * React Router
 * Tailwind CSS
 * Vite
+* Context API
 * Local Storage
+
+## Features
+
+* User registration
+* Login and logout
+* Simulated password recovery
+* Menu filtering by restaurant unit
+* Shopping cart
+* Discount coupon support
+* Loyalty points system
+* Checkout flow
+* Simulated external payment
+* Order tracking
+* LGPD consent banner
+* Responsive design
 
 ## Getting Started
 
@@ -33,7 +51,7 @@ cd raizes-do-nordeste
 npm install
 ```
 
-### Run the development server
+### Start the development server
 
 ```bash
 npm run dev
@@ -53,8 +71,14 @@ npm run build
 
 ## Notes
 
-* Academic and portfolio project.
-* No real backend integration.
-* No real payment processing.
-* User data is stored locally in the browser using Local Storage.
-* Product information and interactions are simulated using mock data.
+* This project was developed for academic and portfolio purposes.
+* No backend integration is included.
+* Payment processing is simulated.
+* User and order data are stored locally in the browser using Local Storage.
+* Product information is based on mock data.
+
+## Author
+
+Richard Silva
+
+Analysis and Systems Development Student
